@@ -6,6 +6,8 @@
 package org.grios.filerenfx.gui;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -30,6 +32,7 @@ import org.grios.filerenfx.gui.components.TableAdapterFile;
 import org.grios.filerenfx.gui.components.action.PaneAction;
 import org.grios.filerenfx.model.FileDescriptor;
 import org.grios.filerenfx.task.FXUtilities;
+import org.grios.filerenfx.task.TaskRenameFilesPreview;
 
 /**
  *
@@ -47,6 +50,7 @@ public class Main extends Application
     @FXML TextField txtSourceDirectory;
     @FXML Button btnLoadDirectory;
     @FXML Button btnAddAction;
+    @FXML Button btnPerformPreview;
     
     @FXML ProgressBar defaultProgressBar;
     @FXML Label lblProgress;
@@ -61,6 +65,9 @@ public class Main extends Application
     FileChooser fc;
     DirectoryChooser dc;
     Alert alert;
+    
+    
+    List<PaneAction> actions;
     
     public Main()
     {
@@ -77,6 +84,8 @@ public class Main extends Application
     
     private void initComponents()
     {
+        actions = new ArrayList<>();
+        
         dc = new DirectoryChooser();
         dc.setTitle("Choose a directory...");
         
@@ -89,6 +98,8 @@ public class Main extends Application
         btnLoadDirectory.setOnAction(evt -> { showDirectoryDialog(); });
         
         btnAddAction.setOnAction(evt -> {addAction();});
+        
+        btnPerformPreview.setOnAction(evt->{performRenamingPreview();});
         
         txtSourceDirectory.setOnKeyReleased(evt -> {
             if (evt.getCode() == KeyCode.ENTER)
@@ -214,7 +225,7 @@ public class Main extends Application
     
     private void addAction()
     {
-        PaneAction pa = new PaneAction(hboxActions);
+        PaneAction pa = new PaneAction(hboxActions, actions);
         try
         {
             pa.initComponents();
@@ -226,5 +237,14 @@ public class Main extends Application
             System.exit(0);
         }
         
+    }
+    
+    private void performRenamingPreview()
+    {
+        TaskRenameFilesPreview trfp = new TaskRenameFilesPreview(this, tvFilesOriginal.getItems(), actions);
+        Thread t = new Thread(trfp);
+        
+        trfp.doBefore();
+        t.start();
     }
 }

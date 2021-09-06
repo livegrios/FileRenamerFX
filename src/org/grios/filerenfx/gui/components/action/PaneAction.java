@@ -5,6 +5,7 @@
  */
 package org.grios.filerenfx.gui.components.action;
 
+import java.util.List;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.MenuItem;
@@ -47,11 +48,15 @@ public class PaneAction
     
     Action action;
     
-    public PaneAction(HBox hboxActions)
+    List<PaneAction> paneActions;
+    
+    public PaneAction(HBox hboxActions, List<PaneAction> paneActions)
     {
         fxmll = new FXMLLoader(PaneAction.class.getResource("pane_action.fxml"));
         fxmll.setController(this);
         this.hboxActions = hboxActions;
+        this.paneActions = paneActions;
+        paneActions.add(this);
     }
     
     public void initComponents() throws Exception
@@ -120,5 +125,7 @@ public class PaneAction
     {
         if (hboxActions != null)
             hboxActions.getChildren().remove(vboxAction);
+        if (paneActions != null)
+            paneActions.remove(this);
     }
 }

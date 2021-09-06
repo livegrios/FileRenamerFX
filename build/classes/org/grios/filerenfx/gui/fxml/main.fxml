@@ -92,7 +92,7 @@
                                                 </ImageView>
                                             </graphic>
                                         </Button>
-                                        <Button fx:id="btnAddAction1" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="48.0" style="-fx-base: #ffffff;">
+                                        <Button fx:id="btnPerformPreview" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="48.0" style="-fx-base: #ffffff;">
                                             <font>
                                                 <Font size="16.0" />
                                             </font>
@@ -104,7 +104,7 @@
                                             </padding>
                                             <graphic>
                                                 <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                                                    <Image url="@/icons/64/play.png" />
+                                                    <Image url="@/icons/64/stamparrowright.png" />
                                                 </ImageView>
                                             </graphic>
                                         </Button>
@@ -120,7 +120,7 @@
                                             </padding>
                                             <graphic>
                                                 <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                                                    <Image url="@/icons/64/stamparrowright.png" />
+                                                    <Image url="@/icons/64/play.png" />
                                                 </ImageView>
                                             </graphic>
                                         </Button>
