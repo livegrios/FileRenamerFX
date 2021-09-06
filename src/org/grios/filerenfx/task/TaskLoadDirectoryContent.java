@@ -70,7 +70,7 @@ public class TaskLoadDirectoryContent extends Task<Void>
             {
                 app.setPanelProgressVisible(false);
                 app.getTableViewFilesOriginal().getItems().clear();
-                TableAdapterFile.doit(tv, listFiles);
+                TableAdapterFile.adapt(tv, listFiles);
             });
         } 
         catch (InterruptedException | ExecutionException e)

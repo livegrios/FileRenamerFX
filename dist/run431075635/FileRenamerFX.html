@@ -1,0 +1,47 @@
+<html><head>
+  <SCRIPT src="./web-files/dtjava.js"></SCRIPT>
+<script>
+    function launchApplication(jnlpfile) {
+        dtjava.launch(            {
+                url : 'FileRenamerFX.jnlp',
+                jnlp_content : 'PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjxqbmxwIHNwZWM9IjEuMCIgeG1sbnM6amZ4PSJodHRwOi8vamF2YWZ4LmNvbSIgaHJlZj0iRmlsZVJlbmFtZXJGWC5qbmxwIj4NCiAgPGluZm9ybWF0aW9uPg0KICAgIDx0aXRsZT5GaWxlUmVuYW1lckZYPC90aXRsZT4NCiAgICA8dmVuZG9yPkxpdmVHcmlvczwvdmVuZG9yPg0KICAgIDxkZXNjcmlwdGlvbj5udWxsPC9kZXNjcmlwdGlvbj4NCiAgICA8b2ZmbGluZS1hbGxvd2VkLz4NCiAgPC9pbmZvcm1hdGlvbj4NCiAgPHJlc291cmNlcz4NCiAgICA8ajJzZSB2ZXJzaW9uPSIxLjYrIiBqYXZhLXZtLWFyZ3M9Ii1EcHJpc20ub3JkZXI9c3cgIiAgaHJlZj0iaHR0cDovL2phdmEuc3VuLmNvbS9wcm9kdWN0cy9hdXRvZGwvajJzZSIvPg0KICAgIDxqYXIgaHJlZj0iRmlsZVJlbmFtZXJGWC5qYXIiIHNpemU9IjE1ODUzMCIgZG93bmxvYWQ9ImVhZ2VyIiAvPg0KICA8L3Jlc291cmNlcz4NCiAgPGFwcGxldC1kZXNjICB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgbWFpbi1jbGFzcz0iY29tLmphdmFmeC5tYWluLk5vSmF2YUZYRmFsbGJhY2siICBuYW1lPSJGaWxlUmVuYW1lckZYIiA+DQogICAgPHBhcmFtIG5hbWU9InJlcXVpcmVkRlhWZXJzaW9uIiB2YWx1ZT0iOC4wKyIvPg0KICA8L2FwcGxldC1kZXNjPg0KICA8amZ4OmphdmFmeC1kZXNjICB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgbWFpbi1jbGFzcz0ib3JnLmdyaW9zLmZpbGVyZW5meC5ndWkuTWFpbiIgIG5hbWU9IkZpbGVSZW5hbWVyRlgiIC8+DQogIDx1cGRhdGUgY2hlY2s9ImFsd2F5cyIvPg0KPC9qbmxwPg0K'
+            },
+            {
+                javafx : '8.0+',
+                jvmargs : '-Dprism.order=sw '
+            },
+            {}
+        );
+        return false;
+    }
+</script>
+
+<script>
+    function javafxEmbedorg.grios.filerenfx.gui() {
+        dtjava.embed(
+            {
+                id : 'org.grios.filerenfx.gui',
+                url : 'FileRenamerFX.jnlp',
+                placeholder : 'javafx-app-placeholder',
+                width : '800',
+                height : '600',
+                jnlp_content : 'PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjxqbmxwIHNwZWM9IjEuMCIgeG1sbnM6amZ4PSJodHRwOi8vamF2YWZ4LmNvbSIgaHJlZj0iRmlsZVJlbmFtZXJGWC5qbmxwIj4NCiAgPGluZm9ybWF0aW9uPg0KICAgIDx0aXRsZT5GaWxlUmVuYW1lckZYPC90aXRsZT4NCiAgICA8dmVuZG9yPkxpdmVHcmlvczwvdmVuZG9yPg0KICAgIDxkZXNjcmlwdGlvbj5udWxsPC9kZXNjcmlwdGlvbj4NCiAgICA8b2ZmbGluZS1hbGxvd2VkLz4NCiAgPC9pbmZvcm1hdGlvbj4NCiAgPHJlc291cmNlcz4NCiAgICA8ajJzZSB2ZXJzaW9uPSIxLjYrIiBqYXZhLXZtLWFyZ3M9Ii1EcHJpc20ub3JkZXI9c3cgIiAgaHJlZj0iaHR0cDovL2phdmEuc3VuLmNvbS9wcm9kdWN0cy9hdXRvZGwvajJzZSIvPg0KICAgIDxqYXIgaHJlZj0iRmlsZVJlbmFtZXJGWC5qYXIiIHNpemU9IjE1ODUzMCIgZG93bmxvYWQ9ImVhZ2VyIiAvPg0KICA8L3Jlc291cmNlcz4NCiAgPGFwcGxldC1kZXNjICB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgbWFpbi1jbGFzcz0iY29tLmphdmFmeC5tYWluLk5vSmF2YUZYRmFsbGJhY2siICBuYW1lPSJGaWxlUmVuYW1lckZYIiA+DQogICAgPHBhcmFtIG5hbWU9InJlcXVpcmVkRlhWZXJzaW9uIiB2YWx1ZT0iOC4wKyIvPg0KICA8L2FwcGxldC1kZXNjPg0KICA8amZ4OmphdmFmeC1kZXNjICB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgbWFpbi1jbGFzcz0ib3JnLmdyaW9zLmZpbGVyZW5meC5ndWkuTWFpbiIgIG5hbWU9IkZpbGVSZW5hbWVyRlgiIC8+DQogIDx1cGRhdGUgY2hlY2s9ImFsd2F5cyIvPg0KPC9qbmxwPg0K'
+            },
+            {
+                javafx : '8.0+',
+                jvmargs : '-Dprism.order=sw '
+            },
+            {}
+        );
+    }
+    <!-- Embed FX application into web page once page is loaded -->
+    dtjava.addOnloadCallback(javafxEmbedorg.grios.filerenfx.gui);
+</script>
+
+</head><body>
+<h2>Test page for <b>FileRenamerFX</b></h2>
+  <b>Webstart:</b> <a href='FileRenamerFX.jnlp' onclick="return launchApplication('FileRenamerFX.jnlp');">click to launch this app as webstart</a><br><hr><br>
+
+  <!-- Applet will be inserted here -->
+  <div id='javafx-app-placeholder'></div>
+</body></html>

@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -24,9 +25,11 @@ import org.grios.filerenfx.core.parse.ActionExtract;
  */
 public class PaneAction
 {
+    
     public static final String COLOR_EXTRACT_HEX = "#BBDEFB";
     public static final String COLOR_COUNT_HEX = "#CCFF90";
     public static final String COLOR_CONSTANT_HEX = "#FFCC80";
+    public static final String COLOR_UNCHECKED = "#ECEFF1";
     
     public static final Color COLOR_EXTRACT = Color.web(COLOR_EXTRACT_HEX);
     public static final Color COLOR_COUNT = Color.web(COLOR_COUNT_HEX);
@@ -41,6 +44,14 @@ public class PaneAction
     @FXML MenuItem mnuiExtract;
     @FXML MenuItem mnuiCounter;
     @FXML MenuItem mnuiConstant;
+    @FXML MenuItem mnuiRemove;
+    
+    @FXML TextField txtExtractStart;
+    @FXML TextField txtExtractTo;
+    @FXML TextField txtCounterFormat;
+    @FXML TextField txtCounterStart;
+    @FXML TextField txtCounterStep;
+    @FXML TextField txtConstantText;
     
     FXMLLoader fxmll;
     
@@ -50,6 +61,10 @@ public class PaneAction
     
     List<PaneAction> paneActions;
     
+    IActionCheck actionCheck;
+    
+    boolean checked;
+    
     public PaneAction(HBox hboxActions, List<PaneAction> paneActions)
     {
         fxmll = new FXMLLoader(PaneAction.class.getResource("pane_action.fxml"));
@@ -57,19 +72,20 @@ public class PaneAction
         this.hboxActions = hboxActions;
         this.paneActions = paneActions;
         paneActions.add(this);
+        checked = false;
     }
     
     public void initComponents() throws Exception
     {
         fxmll.load();
         
-        btnActionType.setOnAction(evt->{removeThisAction();});
+        btnActionType.setOnAction(evt->{checkAction();});
         mnuiConstant.setOnAction(evt->{setConstantType();});
         mnuiCounter.setOnAction(evt->{setCounterType();});
         mnuiExtract.setOnAction(evt->{setExtractType();});
-        
+        mnuiRemove.setOnAction(valuet->{removeThisAction();});
         setExtractType();
-    }
+    }    
     
     public VBox getRoot()
     {
@@ -91,7 +107,7 @@ public class PaneAction
             vboxAction.getChildren().add(hboxExtract);
         
         btnActionType.setStyle("-fx-base: " + COLOR_EXTRACT_HEX);
-        vboxAction.setStyle("-fx-background-color: " + COLOR_EXTRACT_HEX);
+        vboxAction.setStyle("-fx-background-color: " + COLOR_UNCHECKED);
         btnActionType.setText("Extract Filename");
     }
     
@@ -104,7 +120,7 @@ public class PaneAction
         if (!vboxAction.getChildren().contains(hboxCounter))
             vboxAction.getChildren().add(hboxCounter);
         btnActionType.setStyle("-fx-base: " + COLOR_COUNT_HEX);
-        vboxAction.setStyle("-fx-background-color: " + COLOR_COUNT_HEX);
+        vboxAction.setStyle("-fx-background-color: " + COLOR_UNCHECKED);
         btnActionType.setText("Counter");
     }
     
@@ -117,8 +133,18 @@ public class PaneAction
         if (!vboxAction.getChildren().contains(hboxConstant))
             vboxAction.getChildren().add(hboxConstant);
         btnActionType.setStyle("-fx-base: " + COLOR_CONSTANT_HEX);
-        vboxAction.setStyle("-fx-background-color: " + COLOR_CONSTANT_HEX);
+        vboxAction.setStyle("-fx-background-color: " + COLOR_UNCHECKED);
         btnActionType.setText("Constant");
+    }
+    
+    public void setActionCheck(IActionCheck ac)
+    {
+        this.actionCheck = ac;
+    }
+    
+    public boolean isChecked()
+    {
+        return checked;
     }
     
     public void removeThisAction()
@@ -128,4 +154,58 @@ public class PaneAction
         if (paneActions != null)
             paneActions.remove(this);
     }
+    
+    public void checkAction()
+    {
+        String errDesc = null;
+        
+        switch (action.getActionType())
+        {
+            case Extract :
+                Integer start = parseInt(txtExtractStart);
+                Integer end = parseInt(txtExtractTo);
+                if (start == null || start < 1)
+                {
+                    errDesc = "Minimum value for From must be 1. Type a valid integer value";
+                    break;
+                }
+                if (end == null)
+                {
+                    errDesc = "Minimum value for To must be 1. Type a valid integer value";
+                    break;
+                }
+                if (end < start)
+                {
+                    errDesc = "To value must be greater or equal than From value.";
+                    break;
+                }
+                ((ActionExtract) action).setFrom(start);
+                ((ActionExtract) action).setTo(end);
+                vboxAction.setStyle("-fx-background-color: " + COLOR_EXTRACT_HEX);
+                checked = true;
+        }
+        
+        
+        if (errDesc != null && actionCheck != null)
+        {
+            checked = false;
+            actionCheck.setOnCheckError(errDesc);
+        }
+    }
+    
+    public Integer parseInt(TextField txtf)
+    {
+        Integer i = null;
+        try
+        {
+            i = Integer.valueOf(txtf.getText());
+        } 
+        catch (NumberFormatException nfe)
+        {
+            
+        }
+        return i;
+    }
+
+    
 }

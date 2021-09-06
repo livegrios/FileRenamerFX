@@ -21,26 +21,8 @@ import org.grios.filerenfx.task.TaskLoadDirectoryContent;
  * @author LiveGrios
  */
 public class TableAdapterFile
-{
-    public static void adapt(Main app, TableView<FileDescriptor> tv, File[] files, boolean onlyFiles)
-    {
-        TaskLoadDirectoryContent tdc = new TaskLoadDirectoryContent(app, tv, files, onlyFiles);
-        Thread t = new Thread(tdc);
-        tdc.doBefore();
-        t.start();
-    }
-    
-    public static void adapt(TableView<FileDescriptor> tv, File[] files, boolean onlyFiles)
-    {
-        ObservableList<FileDescriptor> listFiles = FXCollections.observableArrayList();
-        if (files != null)
-            for (File f : files)
-                if ((f.isFile() && onlyFiles) || !onlyFiles)
-                    listFiles.add(new FileDescriptor(f));
-                
-    }
-    
-    public static void doit(TableView<FileDescriptor> tv, ObservableList<FileDescriptor> files)
+{   
+    public static void adapt(TableView<FileDescriptor> tv, ObservableList<FileDescriptor> files)
     {
         TableColumn<FileDescriptor, String> tcFileName = new TableColumn<>("File Name");
         TableColumn<FileDescriptor, String> tcFileExt = new TableColumn<>("Ext.");

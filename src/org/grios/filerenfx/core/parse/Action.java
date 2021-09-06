@@ -11,7 +11,7 @@ package org.grios.filerenfx.core.parse;
  */
 public abstract class Action
 {
-    enum ActionType {Extract, Counter, Constant}
+    public enum ActionType {Extract, Counter, Constant}
     
     public abstract ActionType getActionType();
     public abstract String apply(Object o) throws Exception;

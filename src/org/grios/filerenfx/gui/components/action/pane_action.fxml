@@ -5,6 +5,8 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -13,9 +15,37 @@
     <children>
         <SplitMenuButton fx:id="btnActionType" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-base: #BBDEFB;" text="Extract Filename" VBox.vgrow="ALWAYS">
             <items>
-                <MenuItem fx:id="mnuiExtract" mnemonicParsing="false" style="-fx-font-size: 14; -fx-font-family: Tahoma;" text="Extract" />
-                <MenuItem fx:id="mnuiCounter" mnemonicParsing="false" style="-fx-font-size: 14; -fx-font-family: Tahoma;" text="Counter" />
-                <MenuItem fx:id="mnuiConstant" mnemonicParsing="false" style="-fx-font-size: 14; -fx-font-family: Tahoma;" text="Constant" />
+                <MenuItem fx:id="mnuiExtract" mnemonicParsing="false" style="-fx-font-size: 14; -fx-font-family: Tahoma;" text="Extract">
+                    <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                            <Image url="@/icons/64/filecrop.png" />
+                        </ImageView>
+                    </graphic>
+                </MenuItem>
+                <MenuItem fx:id="mnuiCounter" mnemonicParsing="false" style="-fx-font-size: 14; -fx-font-family: Tahoma;" text="Counter">
+                    <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                            <Image url="@/icons/64/place.png" />
+                        </ImageView>
+                    </graphic>
+                </MenuItem>
+                <MenuItem fx:id="mnuiConstant" mnemonicParsing="false" style="-fx-font-size: 14; -fx-font-family: Tahoma;" text="Constant">
+                    <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                            <Image url="@/icons/64/filetext.png" />
+                        </ImageView>
+                    </graphic>
+                </MenuItem>
+                <MenuItem fx:id="mnuiRemove" mnemonicParsing="false" style="-fx-font-size: 14; -fx-font-family: Tahoma;" text="Remove">                    
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <HBox.margin>
+                                <Insets bottom="0.0" left="16.0" top="0.0" />
+                            </HBox.margin>
+                            <Image url="@/icons/64/delete-xxl.png" />
+                        </ImageView>
+                    </graphic>
+                </MenuItem>
             </items>
             <font>
                 <Font name="Tahoma" size="14.0" />
@@ -28,7 +58,7 @@
                         <Font name="Tahoma" size="14.0" />
                     </font>
                 </Label>
-                <TextField alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="56.0" promptText="1">
+                <TextField fx:id="txtExtractStart" alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="56.0" promptText="1" text="1">
                     <HBox.margin>
                         <Insets bottom="4.0" left="4.0" top="4.0" />
                     </HBox.margin>
@@ -44,7 +74,7 @@
                         <Insets left="4.0" />
                     </HBox.margin>
                 </Label>
-                <TextField alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="56.0" promptText="N">
+                <TextField fx:id="txtExtractTo" alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="56.0" promptText="N">
                     <HBox.margin>
                         <Insets bottom="4.0" left="4.0" top="4.0" />
                     </HBox.margin>
@@ -61,7 +91,7 @@
                         <Font name="Tahoma" size="14.0" />
                     </font>
                 </Label>
-                <TextField alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="72.0" promptText="####">
+                <TextField fx:id="txtCounterFormat" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="72.0" promptText="###" text="###">
                     <font>
                         <Font name="Tahoma" size="14.0" />
                     </font>
@@ -69,32 +99,35 @@
                         <Insets bottom="4.0" left="4.0" top="4.0" />
                     </HBox.margin>
                 </TextField>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Start Count:">
-               <font>
-                  <Font name="Tahoma" size="14.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="8.0" />
-               </HBox.margin>
-            </Label>
-            <TextField alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="72.0" promptText="0" text="0">
-               <font>
-                  <Font name="Tahoma" size="14.0" />
-               </font>
-               <HBox.margin>
-                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-               </HBox.margin>
-            </TextField>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Step Count:">
-               <font>
-                  <Font name="Tahoma" size="14.0" />
-               </font>
-            </Label>
-            <TextField alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="72.0" promptText="1" text="1">
-               <font>
-                  <Font name="Tahoma" size="14.0" />
-               </font>
-            </TextField>
+                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="StC:">
+                    <font>
+                        <Font name="Tahoma" size="14.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="8.0" />
+                    </HBox.margin>
+                </Label>
+                <TextField fx:id="txtCounterStart" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="56.0" promptText="0" text="0">
+                    <font>
+                        <Font name="Tahoma" size="14.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                    </HBox.margin>
+                </TextField>
+                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="SpC:">
+                    <font>
+                        <Font name="Tahoma" size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="txtCounterStep" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="56.0" promptText="1" text="1">
+                    <font>
+                        <Font name="Tahoma" size="14.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="4.0" top="4.0" />
+                    </HBox.margin>
+                </TextField>
             </children>
         </HBox>
         <HBox fx:id="hboxConstant" prefHeight="36.0">
@@ -104,7 +137,7 @@
                         <Font name="Tahoma" size="14.0" />
                     </font>
                 </Label>
-                <TextField prefHeight="28.0" prefWidth="72.0" HBox.hgrow="ALWAYS">
+                <TextField fx:id="txtConstantText" prefHeight="28.0" prefWidth="72.0" HBox.hgrow="ALWAYS">
                     <font>
                         <Font name="Tahoma" size="14.0" />
                     </font>

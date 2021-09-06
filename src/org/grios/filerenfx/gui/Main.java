@@ -28,10 +28,11 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.grios.filerenfx.gui.components.TableAdapterFile;
+import org.grios.filerenfx.gui.components.action.IActionCheck;
 import org.grios.filerenfx.gui.components.action.PaneAction;
 import org.grios.filerenfx.model.FileDescriptor;
 import org.grios.filerenfx.task.FXUtilities;
+import org.grios.filerenfx.task.TaskLoadDirectoryContent;
 import org.grios.filerenfx.task.TaskRenameFilesPreview;
 
 /**
@@ -89,8 +90,8 @@ public class Main extends Application
         dc = new DirectoryChooser();
         dc.setTitle("Choose a directory...");
         
-        TableAdapterFile.adapt(tvFilesOriginal, null, false);
-        TableAdapterFile.adapt(tvFilesRenamed, null, false);
+        //TableAdapterFile.adapt(tvFilesOriginal, null, false);
+        //TableAdapterFile.adapt(tvFilesRenamed, null, false);
         
         alert = new Alert(Alert.AlertType.NONE);
         alert.initOwner(window);
@@ -211,11 +212,17 @@ public class Main extends Application
     
     private void loadDirectoryContents(String dirPath)
     {
+        TaskLoadDirectoryContent tldc = null;
+        Thread t = null;
         File f = new File(dirPath);        
         if (f.exists() && f.isDirectory())
         {
-            tvFilesRenamed.getItems().clear();
-            TableAdapterFile.adapt(this, tvFilesOriginal, f.listFiles(), true);
+            //tvFilesRenamed.getItems().clear();
+            //TableAdapterFile.adapt(this, tvFilesOriginal, f.listFiles(), true);
+            tldc = new TaskLoadDirectoryContent(this, tvFilesOriginal, f.listFiles(), true);
+            t = new Thread(tldc);
+            tldc.doBefore();
+            t.start();
         }
         else
         {
@@ -229,6 +236,10 @@ public class Main extends Application
         try
         {
             pa.initComponents();
+            pa.setActionCheck((String ed) ->
+            {
+                showAlert("Action Check Wrror", ed, Alert.AlertType.WARNING);
+            });
             hboxActions.getChildren().add(pa.getRoot());
         } 
         catch (Exception e)
