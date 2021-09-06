@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="vboxAction" style="-fx-background-color: #BBDEFB;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <SplitMenuButton fx:id="btnActionType" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-base: #BBDEFB;" text="Extract Filename" VBox.vgrow="ALWAYS">
+            <items>
+                <MenuItem fx:id="mnuiExtract" mnemonicParsing="false" style="-fx-font-size: 14; -fx-font-family: Tahoma;" text="Extract" />
+                <MenuItem fx:id="mnuiCounter" mnemonicParsing="false" style="-fx-font-size: 14; -fx-font-family: Tahoma;" text="Counter" />
+                <MenuItem fx:id="mnuiConstant" mnemonicParsing="false" style="-fx-font-size: 14; -fx-font-family: Tahoma;" text="Constant" />
+            </items>
+            <font>
+                <Font name="Tahoma" size="14.0" />
+            </font>
+        </SplitMenuButton>
+        <HBox fx:id="hboxExtract" prefHeight="36.0">
+            <children>
+                <Label maxHeight="1.7976931348623157E308" text="From:">
+                    <font>
+                        <Font name="Tahoma" size="14.0" />
+                    </font>
+                </Label>
+                <TextField alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="56.0" promptText="1">
+                    <HBox.margin>
+                        <Insets bottom="4.0" left="4.0" top="4.0" />
+                    </HBox.margin>
+                    <font>
+                        <Font name="Tahoma" size="14.0" />
+                    </font>
+                </TextField>
+                <Label maxHeight="1.7976931348623157E308" text="To:">
+                    <font>
+                        <Font name="Tahoma" size="13.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="4.0" />
+                    </HBox.margin>
+                </Label>
+                <TextField alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="56.0" promptText="N">
+                    <HBox.margin>
+                        <Insets bottom="4.0" left="4.0" top="4.0" />
+                    </HBox.margin>
+                    <font>
+                        <Font name="Tahoma" size="14.0" />
+                    </font>
+                </TextField>
+            </children>
+        </HBox>
+        <HBox fx:id="hboxCounter" prefHeight="36.0">
+            <children>
+                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Format:">
+                    <font>
+                        <Font name="Tahoma" size="14.0" />
+                    </font>
+                </Label>
+                <TextField alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="72.0" promptText="####">
+                    <font>
+                        <Font name="Tahoma" size="14.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets bottom="4.0" left="4.0" top="4.0" />
+                    </HBox.margin>
+                </TextField>
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Start Count:">
+               <font>
+                  <Font name="Tahoma" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+            </Label>
+            <TextField alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="72.0" promptText="0" text="0">
+               <font>
+                  <Font name="Tahoma" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </HBox.margin>
+            </TextField>
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Step Count:">
+               <font>
+                  <Font name="Tahoma" size="14.0" />
+               </font>
+            </Label>
+            <TextField alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="72.0" promptText="1" text="1">
+               <font>
+                  <Font name="Tahoma" size="14.0" />
+               </font>
+            </TextField>
+            </children>
+        </HBox>
+        <HBox fx:id="hboxConstant" prefHeight="36.0">
+            <children>
+                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Text:">
+                    <font>
+                        <Font name="Tahoma" size="14.0" />
+                    </font>
+                </Label>
+                <TextField prefHeight="28.0" prefWidth="72.0" HBox.hgrow="ALWAYS">
+                    <font>
+                        <Font name="Tahoma" size="14.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets bottom="4.0" left="4.0" top="4.0" />
+                    </HBox.margin>
+                </TextField>
+            </children>
+        </HBox>
+    </children>
+    <padding>
+        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+    </padding>
+</VBox>

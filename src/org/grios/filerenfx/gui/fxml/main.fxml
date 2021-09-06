@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane id="BorderPane" fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <VBox prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox prefHeight="42.0" prefWidth="600.0">
+                    <children>
+                        <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" text="Directory to explore:" textAlignment="JUSTIFY" textFill="#0d6efd">
+                            <font>
+                                <Font name="Tahoma" size="14.0" />
+                            </font>
+                            <padding>
+                                <Insets left="8.0" right="8.0" />
+                            </padding>
+                            <HBox.margin>
+                                <Insets bottom="2.0" top="4.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="txtSourceDirectory" maxHeight="32.0" prefHeight="32.0" promptText="Type Directory Path to Explore..." style="-fx-text-fill: #212121;" HBox.hgrow="ALWAYS">
+                            <font>
+                                <Font name="Bitstream Vera Sans Mono" size="14.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets bottom="4.0" left="4.0" top="6.0" />
+                            </HBox.margin>
+                        </TextField>
+                        <Button fx:id="btnLoadDirectory" mnemonicParsing="false" prefHeight="32.0" prefWidth="48.0" style="-fx-base: #FFFFFF;">
+                            <HBox.margin>
+                                <Insets bottom="4.0" left="8.0" right="8.0" top="6.0" />
+                            </HBox.margin>
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <Image url="@/icons/64/folder_yellow02.png" />
+                                </ImageView>
+                            </graphic>
+                            <padding>
+                                <Insets bottom="-4.0" top="-4.0" />
+                            </padding>
+                        </Button>
+                    </children>
+                </HBox>
+                <HBox prefHeight="140.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+                    <children>
+                        <ScrollPane maxHeight="1.7976931348623157E308" prefWidth="200.0" vbarPolicy="NEVER" HBox.hgrow="ALWAYS">
+                            <content>
+                                <HBox fx:id="hboxActions" maxHeight="100.0" maxWidth="1.7976931348623157E308" prefHeight="100.0" style="-fx-background-color: #ffffff; -fx-border-width: 2; -fx-border-color: #FFCC80; -fx-border-radius: 8;">
+                                    <padding>
+                                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                    </padding>
+                                </HBox>
+                            </content>
+                            <HBox.margin>
+                                <Insets left="8.0" right="8.0" />
+                            </HBox.margin>
+                            <padding>
+                                <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+                            </padding>
+                        </ScrollPane>
+                        <VBox prefWidth="256.0">
+                            <children>
+                                <HBox prefHeight="48.0">
+                                    <children>
+                                        <Button fx:id="btnAddAction" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="48.0" style="-fx-base: #ffffff;">
+                                            <HBox.margin>
+                                                <Insets bottom="4.0" left="4.0" top="4.0" />
+                                            </HBox.margin>
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets bottom="-4.0" top="-4.0" />
+                                            </padding>
+                                            <graphic>
+                                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                                    <Image url="@/icons/64/plus.png" />
+                                                </ImageView>
+                                            </graphic>
+                                        </Button>
+                                        <Button fx:id="btnAddAction1" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="48.0" style="-fx-base: #ffffff;">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets bottom="4.0" left="4.0" top="4.0" />
+                                            </HBox.margin>
+                                            <padding>
+                                                <Insets bottom="-4.0" top="-4.0" />
+                                            </padding>
+                                            <graphic>
+                                                <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                                    <Image url="@/icons/64/play.png" />
+                                                </ImageView>
+                                            </graphic>
+                                        </Button>
+                                        <Button fx:id="btnAddAction11" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="48.0" style="-fx-base: #ffffff;">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                            </HBox.margin>
+                                            <padding>
+                                                <Insets bottom="-4.0" top="-4.0" />
+                                            </padding>
+                                            <graphic>
+                                                <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                                    <Image url="@/icons/64/stamparrowright.png" />
+                                                </ImageView>
+                                            </graphic>
+                                        </Button>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+    <center>
+        <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <items>
+                <VBox minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;">
+                    <children>
+                        <HBox prefHeight="32.0" prefWidth="600.0" style="-fx-background-color: #FAFAFA;">
+                            <children>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                    </HBox.margin>
+                                    <Image url="@/icons/64/folderdocs.png" />
+                                </ImageView>
+                                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Directory Content" textAlignment="JUSTIFY" textFill="#0d6efd">
+                                    <font>
+                                        <Font name="Tahoma" size="14.0" />
+                                    </font>
+                                    <padding>
+                                        <Insets left="8.0" right="8.0" />
+                                    </padding>
+                                    <HBox.margin>
+                                        <Insets bottom="2.0" top="4.0" />
+                                    </HBox.margin>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <TableView fx:id="tvFilesOriginal" maxHeight="1.7976931348623157E308" style="-fx-font-size: 14; -fx-font-family: Bitstream Vera Sans Mono;" VBox.vgrow="ALWAYS">
+                            <VBox.margin>
+                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                            </VBox.margin>
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
+                        </TableView>
+                    </children>
+                </VBox>
+                <VBox minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;">
+                    <children>
+                        <HBox prefHeight="32.0" prefWidth="600.0" style="-fx-background-color: #FAFAFA;">
+                            <children>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                    </HBox.margin>
+                                    <image>
+                                        <Image url="@/icons/64/profileformat.png" />
+                                    </image>
+                                </ImageView>
+                                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Result Preview" textAlignment="JUSTIFY" textFill="#0d6efd">
+                                    <font>
+                                        <Font name="Tahoma" size="14.0" />
+                                    </font>
+                                    <padding>
+                                        <Insets left="8.0" right="8.0" />
+                                    </padding>
+                                    <HBox.margin>
+                                        <Insets bottom="2.0" top="4.0" />
+                                    </HBox.margin>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <TableView fx:id="tvFilesRenamed" maxHeight="1.7976931348623157E308" style="-fx-font-size: 14; -fx-font-family: Bitstream Vera Sans Mono;" VBox.vgrow="ALWAYS">
+                            <VBox.margin>
+                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                            </VBox.margin>
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
+                        </TableView>
+                    </children>
+                </VBox>
+            </items>
+            <BorderPane.margin>
+                <Insets bottom="4.0" left="4.0" right="4.0" top="8.0" />
+            </BorderPane.margin>
+        </SplitPane>
+    </center>
+    <bottom>
+        <VBox fx:id="panelProgress" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox prefHeight="32.0" style="-fx-background-color: #FAFAFA;">
+                    <children>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <HBox.margin>
+                                <Insets bottom="4.0" left="8.0" right="4.0" top="4.0" />
+                            </HBox.margin>
+                            <Image url="@/icons/48/prism-48.png" />
+                        </ImageView>
+                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="32.0" text="Operation Progress" textAlignment="JUSTIFY" textFill="#0d6efd">
+                            <font>
+                                <Font name="Tahoma" size="14.0" />
+                            </font>
+                            <padding>
+                                <Insets left="8.0" right="8.0" />
+                            </padding>
+                        </Label>
+                    </children>
+                </HBox>
+                <ProgressBar fx:id="defaultProgressBar" maxWidth="1.7976931348623157E308" prefHeight="24.0" progress="0.0">
+                    <VBox.margin>
+                        <Insets left="8.0" right="8.0" top="4.0" />
+                    </VBox.margin>
+                </ProgressBar>
+                <Label fx:id="lblProgress" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" textAlignment="JUSTIFY" textFill="#37474f">
+                    <font>
+                        <Font name="Verdana" size="11.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+                    </VBox.margin>
+                </Label>
+            </children>
+        </VBox>
+    </bottom>
+</BorderPane>

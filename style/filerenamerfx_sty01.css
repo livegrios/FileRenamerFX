@@ -1,0 +1,69 @@
+.table-view{
+    -fx-background-color: #FFFFFF;
+    -fx-font-family: 'Bitstream Vera Sans Mono';
+}
+
+.table-row-cell {
+    -fx-cell-size: 32px;
+    -fx-font-family: 'Bitstream Vera Sans Mono';
+}
+
+/*color de una fila cuando en raton se encuentra sobre la misma*/
+.table-view:row-selection .table-row-cell:filled:hover{
+    /*-fx-background-color: #ECEFF1FF;*/
+    -fx-background-color: #ECEFF1; 
+    -fx-font-weight: bold;
+    /*-fx-text-background-color: red;*/
+    
+}
+
+/* color de una fila cuando en raton se encuentra sobre una fila que esta seleccionada*/
+.table-view:row-selection .table-row-cell:filled:selected:hover { 
+    -fx-background-color: #B0BEC5;
+    -fx-text-background-color: #000000;
+}
+
+/*color de una fila seleccionada por el usuario*/
+.table-view:row-selection .table-row-cell:filled:selected { 
+    -fx-background-color: #ECEFF1;
+    -fx-text-background-color: #263238;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell:odd{
+    -fx-background-color: #FFFFFF;
+    -fx-font-weight: normal;
+    -fx-text-background-color: #263238;
+    /*-fx-background-insets: 0, 0 0 1 0;*/
+    /*-fx-padding: 0.0em;*/
+}
+.table-row-cell:even{
+    -fx-background-color: #ffffff;
+    -fx-font-weight: normal;
+    -fx-text-background-color: #263238;
+    /*-fx-background-insets: 0, 0 0 1 0;*/
+    /*-fx-padding: 0.0em;*/
+}
+
+.text-field, .text-area {
+	-fx-border-color: #cccccc;
+	-fx-background-color: white;
+	-fx-border-radius: 4;
+	-fx-background-radius: 4;
+	-fx-effect: innershadow(gaussian, transparent, 0, 0, 0, 0);
+}
+
+.text-field:focused, .text-area:focused {
+	-fx-border-color: #66afe9;
+	-fx-effect: dropshadow(gaussian, #66afe9, 10, 0, 0, 0);
+}
+
+.scroll-pane > .viewport {
+   -fx-background-color: #ffffff;
+}
+
+
+.progress-bar
+{
+    -fx-accent: #00E676;
+}
