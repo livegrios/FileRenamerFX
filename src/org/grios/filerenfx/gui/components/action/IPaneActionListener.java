@@ -9,7 +9,9 @@ package org.grios.filerenfx.gui.components.action;
  *
  * @author LiveGrios
  */
-public interface IActionCheck
+public interface IPaneActionListener
 {
     public void setOnCheckError(String errorDescription);
+    public void setOnActionRemoved(PaneAction pa);
+    public void setOnCheckProcessFinished();
 }

@@ -45,6 +45,7 @@ public class ActionCounter extends Action
     public void setPattern(String pattern)
     {
         this.pattern = pattern;
+        df = new DecimalFormat(pattern);
     }
     
     public DecimalFormat getFormat()

@@ -91,7 +91,7 @@
                         <Font name="Tahoma" size="14.0" />
                     </font>
                 </Label>
-                <TextField fx:id="txtCounterFormat" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="72.0" promptText="###" text="###">
+                <TextField fx:id="txtCounterFormat" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="72.0" promptText="000" text="000">
                     <font>
                         <Font name="Tahoma" size="14.0" />
                     </font>

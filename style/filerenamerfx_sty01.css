@@ -67,3 +67,22 @@
 {
     -fx-accent: #00E676;
 }
+
+
+.scroll-pane-actions {
+    -fx-border-width: 2;
+    -fx-border-color:  #FFCC80;
+    -fx-border-radius: 8;
+    /*-fx-padding: 0;*/
+    -fx-background-insets: 0;
+}
+
+.scroll-pane-actions > .corner {
+    -fx-background-color: #ffffff;
+}
+
+.scroll-pane-actions > .viewport {
+   -fx-background-color: #FFFFFF;
+   -fx-padding: 0;
+   
+}

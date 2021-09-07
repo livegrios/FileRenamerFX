@@ -28,7 +28,7 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.grios.filerenfx.gui.components.action.IActionCheck;
+import org.grios.filerenfx.gui.components.action.IPaneActionListener;
 import org.grios.filerenfx.gui.components.action.PaneAction;
 import org.grios.filerenfx.model.FileDescriptor;
 import org.grios.filerenfx.task.FXUtilities;
@@ -41,8 +41,14 @@ import org.grios.filerenfx.task.TaskRenameFilesPreview;
  */
 public class Main extends Application
 {
+    public static final String COLORHEX_FONT_SUCCESS = "#2e7d32";
+    public static final String COLORHEX_FONT_ERROR = "#D32F2F";
+    public static final Color COLOR_FONT_SUCCESS = Color.web(COLORHEX_FONT_SUCCESS);
+    public static final Color COLOR_FONT_ERROR = Color.web(COLORHEX_FONT_ERROR);
+    
     @FXML BorderPane rootPane;
-    @FXML HBox hboxActions;    
+    //@FXML HBox hboxActions;    
+    @FXML VBox vboxActions;    
     @FXML VBox panelProgress;
     
     @FXML TableView<FileDescriptor> tvFilesOriginal;
@@ -51,10 +57,19 @@ public class Main extends Application
     @FXML TextField txtSourceDirectory;
     @FXML Button btnLoadDirectory;
     @FXML Button btnAddAction;
-    @FXML Button btnPerformPreview;
+    @FXML Button btnRemoveAllActions;
+    @FXML Button btnCheckAllActions;
+    
+    @FXML Button btnPerformPreview;    
+    
+    @FXML Label lblActionsAdded;
+    @FXML Label lblActionsCorrect;
+    @FXML Label lblActionsErrorTitle;
+    @FXML Label lblActionsError;
     
     @FXML ProgressBar defaultProgressBar;
     @FXML Label lblProgress;
+    
     
     
     Stage window;    
@@ -99,6 +114,8 @@ public class Main extends Application
         btnLoadDirectory.setOnAction(evt -> { showDirectoryDialog(); });
         
         btnAddAction.setOnAction(evt -> {addAction();});
+        btnRemoveAllActions.setOnAction(evt -> {removeAllActions();});
+        btnCheckAllActions.setOnAction(evt -> {checkAllActions();});
         
         btnPerformPreview.setOnAction(evt->{performRenamingPreview();});
         
@@ -206,8 +223,28 @@ public class Main extends Application
                 e.printStackTrace();
             }
         }
+    }
+    
+    public void updateActionsInventory()
+    {
+        int cc = 0;
+        lblActionsAdded.setText("" + vboxActions.getChildren().size());
+        for (PaneAction pa : actions)
+            if (pa.isChecked())
+                cc++;
+        lblActionsCorrect.setText("" + cc);
+        lblActionsError.setText("" + (vboxActions.getChildren().size() - cc));
         
-        
+        if (vboxActions.getChildren().size() - cc == 0)
+        {
+            lblActionsError.setTextFill(COLOR_FONT_SUCCESS);
+            lblActionsErrorTitle.setTextFill(COLOR_FONT_SUCCESS);
+        }
+        else
+        {
+            lblActionsError.setTextFill(COLOR_FONT_ERROR);
+            lblActionsErrorTitle.setTextFill(COLOR_FONT_ERROR);
+        }
     }
     
     private void loadDirectoryContents(String dirPath)
@@ -232,30 +269,83 @@ public class Main extends Application
     
     private void addAction()
     {
-        PaneAction pa = new PaneAction(hboxActions, actions);
+        PaneAction pa = new PaneAction(vboxActions, actions);
+        IPaneActionListener ipal = null;
         try
         {
-            pa.initComponents();
-            pa.setActionCheck((String ed) ->
+            ipal = new IPaneActionListener()
             {
-                showAlert("Action Check Wrror", ed, Alert.AlertType.WARNING);
-            });
-            hboxActions.getChildren().add(pa.getRoot());
+                @Override
+                public void setOnCheckError(String ed)
+                {
+                    showAlert("Action Check Error", ed, Alert.AlertType.WARNING);
+                }
+
+                @Override
+                public void setOnActionRemoved(PaneAction pa)
+                {
+                    updateActionsInventory();
+                }
+
+                @Override
+                public void setOnCheckProcessFinished()
+                {
+                    updateActionsInventory();
+                }
+            };
+            pa.initComponents();            
+            pa.setActionListener(ipal);
+            vboxActions.getChildren().add(pa.getRoot());            
         } 
         catch (Exception e)
         {
             e.printStackTrace();
             System.exit(0);
         }
-        
+        updateActionsInventory();
     }
     
     private void performRenamingPreview()
     {
         TaskRenameFilesPreview trfp = new TaskRenameFilesPreview(this, tvFilesOriginal.getItems(), actions);
         Thread t = new Thread(trfp);
+             
+        if (tvFilesOriginal.getItems() == null || tvFilesOriginal.getItems().size() < 1)
+        {
+            showAlert("No Files were selected to be renamed.", "No Files were selected to be renamed. Select a different directory.", Alert.AlertType.WARNING);
+            return;
+        }
+        
+        if (actions.size() < 1)
+        {
+            showAlert("No Actions were defined.", "No Actions were defined to be performed.", Alert.AlertType.WARNING);
+            return;
+        }
+        
+        checkAllActions();
+        for (PaneAction pa : actions)
+        {
+            if (!pa.isChecked())
+            {
+                //showAlert("Actions with error.", "Some actions have an error. You must to correct it before to run the preview process.", Alert.AlertType.WARNING);
+                return;
+            }
+        }
         
         trfp.doBefore();
         t.start();
+    }
+    
+    private void checkAllActions()
+    {
+        for (PaneAction pa : actions)
+            pa.checkAction();
+    }
+    
+    private void removeAllActions()
+    {
+        vboxActions.getChildren().clear();
+        actions.clear();
+        updateActionsInventory();
     }
 }

@@ -48,8 +48,8 @@
                                 <Insets bottom="4.0" left="8.0" right="8.0" top="6.0" />
                             </HBox.margin>
                             <graphic>
-                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                                    <Image url="@/icons/64/folder_yellow02.png" />
+                                <ImageView fitHeight="24.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                    <Image url="@/icons/64/pngwing.com.png" />
                                 </ImageView>
                             </graphic>
                             <padding>
@@ -58,154 +58,181 @@
                         </Button>
                     </children>
                 </HBox>
-                <HBox prefHeight="140.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
-                    <children>
-                        <ScrollPane maxHeight="1.7976931348623157E308" prefWidth="200.0" vbarPolicy="NEVER" HBox.hgrow="ALWAYS">
-                            <content>
-                                <HBox fx:id="hboxActions" maxHeight="100.0" maxWidth="1.7976931348623157E308" prefHeight="100.0" style="-fx-background-color: #ffffff; -fx-border-width: 2; -fx-border-color: #FFCC80; -fx-border-radius: 8;">
-                                    <padding>
-                                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                                    </padding>
-                                </HBox>
-                            </content>
-                            <HBox.margin>
-                                <Insets left="8.0" right="8.0" />
-                            </HBox.margin>
-                            <padding>
-                                <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
-                            </padding>
-                        </ScrollPane>
-                        <VBox prefWidth="256.0">
-                            <children>
-                                <HBox prefHeight="48.0">
-                                    <children>
-                                        <Button fx:id="btnAddAction" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="48.0" style="-fx-base: #ffffff;">
-                                            <HBox.margin>
-                                                <Insets bottom="4.0" left="4.0" top="4.0" />
-                                            </HBox.margin>
-                                            <font>
-                                                <Font size="16.0" />
-                                            </font>
-                                            <padding>
-                                                <Insets bottom="-4.0" top="-4.0" />
-                                            </padding>
-                                            <graphic>
-                                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                                                    <Image url="@/icons/64/plus.png" />
-                                                </ImageView>
-                                            </graphic>
-                                        </Button>
-                                        <Button fx:id="btnPerformPreview" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="48.0" style="-fx-base: #ffffff;">
-                                            <font>
-                                                <Font size="16.0" />
-                                            </font>
-                                            <HBox.margin>
-                                                <Insets bottom="4.0" left="4.0" top="4.0" />
-                                            </HBox.margin>
-                                            <padding>
-                                                <Insets bottom="-4.0" top="-4.0" />
-                                            </padding>
-                                            <graphic>
-                                                <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                                                    <Image url="@/icons/64/stamparrowright.png" />
-                                                </ImageView>
-                                            </graphic>
-                                        </Button>
-                                        <Button fx:id="btnAddAction11" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="48.0" style="-fx-base: #ffffff;">
-                                            <font>
-                                                <Font size="16.0" />
-                                            </font>
-                                            <HBox.margin>
-                                                <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-                                            </HBox.margin>
-                                            <padding>
-                                                <Insets bottom="-4.0" top="-4.0" />
-                                            </padding>
-                                            <graphic>
-                                                <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                                                    <Image url="@/icons/64/play.png" />
-                                                </ImageView>
-                                            </graphic>
-                                        </Button>
-                                    </children>
-                                    <VBox.margin>
-                                        <Insets />
-                                    </VBox.margin>
-                                </HBox>
-                        <GridPane style="-fx-background-color: #ffffff;">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="48.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Total Actions Added:" textFill="#536d78">
-                                 <padding>
-                                    <Insets left="4.0" right="4.0" />
-                                 </padding>
-                                 <font>
-                                    <Font name="Tahoma" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="0" textFill="#536d78" GridPane.columnIndex="1">
-                                 <padding>
-                                    <Insets left="4.0" right="4.0" />
-                                 </padding>
-                                 <font>
-                                    <Font name="Bitstream Vera Sans Mono" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Total Actions Correct:" textFill="#2e7d32" GridPane.rowIndex="1">
-                                 <padding>
-                                    <Insets left="4.0" right="4.0" />
-                                 </padding>
-                                 <font>
-                                    <Font name="Tahoma" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="0" textFill="#2e7d32" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                 <padding>
-                                    <Insets left="4.0" right="4.0" />
-                                 </padding>
-                                 <font>
-                                    <Font name="Bitstream Vera Sans Mono" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Total Actions with Errors:" textFill="#d64215" GridPane.rowIndex="2">
-                                 <padding>
-                                    <Insets left="4.0" right="4.0" />
-                                 </padding>
-                                 <font>
-                                    <Font name="Tahoma" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="0" textFill="#d64215" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                 <padding>
-                                    <Insets left="4.0" right="4.0" />
-                                 </padding>
-                                 <font>
-                                    <Font name="Bitstream Vera Sans Mono" size="13.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <VBox.margin>
-                              <Insets top="4.0" />
-                           </VBox.margin>
-                        </GridPane>
-                            </children>
-                        </VBox>
-                    </children>
-                    <padding>
-                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                    </padding>
-                </HBox>
             </children>
         </VBox>
     </top>
+    <left>
+        <VBox maxHeight="1.7976931348623157E308" minWidth="360.0" prefWidth="360.0" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="4.0" left="4.0" top="8.0" />
+            </BorderPane.margin>
+            <children>
+                <HBox minHeight="48.0" prefHeight="48.0">
+                    <children>
+                        <Button fx:id="btnAddAction" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="48.0" style="-fx-base: #ffffff;">
+                            <HBox.margin>
+                                <Insets bottom="4.0" left="4.0" top="4.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                            <padding>
+                                <Insets bottom="-4.0" top="-4.0" />
+                            </padding>
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <Image url="@/icons/64/plus.png" />
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="btnRemoveAllActions" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="48.0" style="-fx-base: #ffffff;">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                            <padding>
+                                <Insets bottom="-4.0" top="-4.0" />
+                            </padding>
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@/icons/64/eraser03.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <HBox.margin>
+                                <Insets bottom="4.0" left="4.0" top="4.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button fx:id="btnCheckAllActions" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="48.0" style="-fx-base: #ffffff;">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                            <padding>
+                                <Insets bottom="-4.0" top="-4.0" />
+                            </padding>
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@/icons/64/checkmark.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <HBox.margin>
+                                <Insets bottom="4.0" left="4.0" top="4.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button fx:id="btnAddAction11" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="48.0" style="-fx-base: #ffffff;">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets bottom="4.0" left="32.0" right="4.0" top="4.0" />
+                            </HBox.margin>
+                            <padding>
+                                <Insets bottom="-4.0" top="-4.0" />
+                            </padding>
+                            <graphic>
+                                <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                    <Image url="@/icons/64/play.png" />
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="btnPerformPreview" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="48.0" style="-fx-base: #ffffff;">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets bottom="4.0" left="4.0" top="4.0" />
+                            </HBox.margin>
+                            <padding>
+                                <Insets bottom="-4.0" top="-4.0" />
+                            </padding>
+                            <graphic>
+                                <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                    <Image url="@/icons/64/stamparrowright.png" />
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </HBox>
+                <ScrollPane hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="scroll-pane-actions" VBox.vgrow="ALWAYS">
+                    <VBox.margin>
+                        <Insets bottom="4.0" left="4.0" right="2.0" top="4.0" />
+                    </VBox.margin>
+                    <content>
+                        <VBox fx:id="vboxActions" prefWidth="336.0" />
+                    </content>
+                </ScrollPane>
+                <GridPane maxHeight="1.7976931348623157E308" minHeight="72.0" prefHeight="72.0" style="-fx-background-color: #ffffff;">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="48.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Total Actions Added:" textFill="#536d78">
+                            <padding>
+                                <Insets left="4.0" right="4.0" />
+                            </padding>
+                            <font>
+                                <Font name="Tahoma" size="13.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="lblActionsAdded" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="0" textFill="#536d78" GridPane.columnIndex="1">
+                            <padding>
+                                <Insets left="4.0" right="4.0" />
+                            </padding>
+                            <font>
+                                <Font name="Bitstream Vera Sans Mono" size="13.0" />
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Total Actions Correct:" textFill="#2e7d32" GridPane.rowIndex="1">
+                            <padding>
+                                <Insets left="4.0" right="4.0" />
+                            </padding>
+                            <font>
+                                <Font name="Tahoma" size="13.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="lblActionsCorrect" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="0" textFill="#2e7d32" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <padding>
+                                <Insets left="4.0" right="4.0" />
+                            </padding>
+                            <font>
+                                <Font name="Bitstream Vera Sans Mono" size="13.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="lblActionsErrorTitle" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Total Actions Unchecked:" textFill="#d32f2f" GridPane.rowIndex="2">
+                            <padding>
+                                <Insets left="4.0" right="4.0" />
+                            </padding>
+                            <font>
+                                <Font name="Tahoma" size="13.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="lblActionsError" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="0" textFill="#d32f2f" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <padding>
+                                <Insets left="4.0" right="4.0" />
+                            </padding>
+                            <font>
+                                <Font name="Bitstream Vera Sans Mono" size="13.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="4.0" />
+                    </VBox.margin>
+                </GridPane>
+            </children>
+        </VBox>
+    </left>
     <center>
         <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <items>
@@ -319,5 +346,5 @@
                 </Label>
             </children>
         </VBox>
-    </bottom>
+    </bottom>    
 </BorderPane>

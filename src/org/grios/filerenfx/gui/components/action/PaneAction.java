@@ -35,6 +35,8 @@ public class PaneAction
     public static final Color COLOR_COUNT = Color.web(COLOR_COUNT_HEX);
     public static final Color COLOR_CONSTANT = Color.web(COLOR_CONSTANT_HEX);
     
+    public static final char CHAR_NUMBER_PATTERN = '0';
+    
     @FXML VBox vboxAction;
     @FXML SplitMenuButton btnActionType;
     @FXML HBox hboxExtract;
@@ -55,21 +57,21 @@ public class PaneAction
     
     FXMLLoader fxmll;
     
-    HBox hboxActions;
+    VBox vboxActions;
     
     Action action;
     
     List<PaneAction> paneActions;
     
-    IActionCheck actionCheck;
+    IPaneActionListener actionListener;
     
     boolean checked;
     
-    public PaneAction(HBox hboxActions, List<PaneAction> paneActions)
+    public PaneAction(VBox vboxActions, List<PaneAction> paneActions)
     {
         fxmll = new FXMLLoader(PaneAction.class.getResource("pane_action.fxml"));
         fxmll.setController(this);
-        this.hboxActions = hboxActions;
+        this.vboxActions = vboxActions;
         this.paneActions = paneActions;
         paneActions.add(this);
         checked = false;
@@ -137,9 +139,9 @@ public class PaneAction
         btnActionType.setText("Constant");
     }
     
-    public void setActionCheck(IActionCheck ac)
+    public void setActionListener(IPaneActionListener al)
     {
-        this.actionCheck = ac;
+        this.actionListener = al;
     }
     
     public boolean isChecked()
@@ -149,10 +151,12 @@ public class PaneAction
     
     public void removeThisAction()
     {
-        if (hboxActions != null)
-            hboxActions.getChildren().remove(vboxAction);
+        if (vboxActions != null)
+            vboxActions.getChildren().remove(vboxAction);
         if (paneActions != null)
             paneActions.remove(this);
+        if (actionListener != null)
+            actionListener.setOnActionRemoved(this);
     }
     
     public void checkAction()
@@ -166,30 +170,88 @@ public class PaneAction
                 Integer end = parseInt(txtExtractTo);
                 if (start == null || start < 1)
                 {
-                    errDesc = "Minimum value for From must be 1. Type a valid integer value";
+                    errDesc = "Minimum value for \"From\" must be 1. Type a valid Integer value";
                     break;
                 }
                 if (end == null)
                 {
-                    errDesc = "Minimum value for To must be 1. Type a valid integer value";
+                    errDesc = "Minimum value for \"To\" must be 1. Type a valid Integer value";
                     break;
                 }
                 if (end < start)
                 {
-                    errDesc = "To value must be greater or equal than From value.";
+                    errDesc = "\"To\" value must be greater or equal than \"From\" value.";
                     break;
                 }
-                ((ActionExtract) action).setFrom(start);
-                ((ActionExtract) action).setTo(end);
-                vboxAction.setStyle("-fx-background-color: " + COLOR_EXTRACT_HEX);
-                checked = true;
+                
+                if (errDesc == null)
+                {
+                    ((ActionExtract) action).setFrom(start);
+                    ((ActionExtract) action).setTo(end);
+                    vboxAction.setStyle("-fx-background-color: " + COLOR_EXTRACT_HEX);
+                    checked = true;
+                    if (actionListener != null) actionListener.setOnCheckProcessFinished();
+                }
+                break;
+            case Counter :
+                Integer startCounter = parseInt(txtCounterStart);
+                Integer step = parseInt(txtCounterStep);
+                if (txtCounterFormat.getText().isEmpty())
+                {
+                    errDesc = "Counter pattern must not be empty.";
+                    break;
+                }
+                errDesc = checkCounterPattern();
+                if (errDesc != null)
+                    break;
+                
+                if (startCounter == null)
+                {
+                    errDesc = "Type a valid Integer value";
+                    break;
+                }
+                if (step == null || step < 1)
+                {
+                    errDesc = "Minimum value for \"Step\" must be 1. Type a valid integer value";
+                    break;
+                }
+                if (errDesc == null)
+                {
+                    ((ActionCounter) action).setStart(startCounter);
+                    ((ActionCounter) action).setStep(step);
+                    ((ActionCounter) action).setPattern(txtCounterFormat.getText());
+                    vboxAction.setStyle("-fx-background-color: " + COLOR_COUNT_HEX);
+                    checked = true;
+                    if (actionListener != null) actionListener.setOnCheckProcessFinished();
+                }
+                break;
+                
+            case Constant :
+                if (txtConstantText.getText().isEmpty())
+                {
+                    errDesc = "Constant String must not be empty.";
+                    break;
+                }
+                else
+                {
+                    ((ActionConstant) action).setText(txtConstantText.getText());
+                    vboxAction.setStyle("-fx-background-color: " + COLOR_CONSTANT_HEX);
+                    checked = true;
+                    if (actionListener != null) actionListener.setOnCheckProcessFinished();
+                }
         }
         
         
-        if (errDesc != null && actionCheck != null)
+        if (errDesc != null)
         {
             checked = false;
-            actionCheck.setOnCheckError(errDesc);
+            vboxAction.setStyle("-fx-background-color: " + COLOR_UNCHECKED);
+            if (actionListener != null)
+            {                
+                actionListener.setOnCheckError(errDesc);
+                actionListener.setOnCheckProcessFinished();
+            }
+            
         }
     }
     
@@ -198,7 +260,7 @@ public class PaneAction
         Integer i = null;
         try
         {
-            i = Integer.valueOf(txtf.getText());
+            i = Integer.valueOf(txtf.getText().trim());
         } 
         catch (NumberFormatException nfe)
         {
@@ -207,5 +269,12 @@ public class PaneAction
         return i;
     }
 
+    public String checkCounterPattern()
+    {
+        for (int i = 0; i < txtCounterFormat.getText().length(); i++)
+            if (txtCounterFormat.getText().charAt(i) != CHAR_NUMBER_PATTERN)
+                return "Counter Pattern must contain only character \"#\".";
+        return null;
+    }
     
 }
