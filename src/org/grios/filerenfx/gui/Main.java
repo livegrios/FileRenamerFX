@@ -52,7 +52,7 @@ public class Main extends Application
     @FXML VBox panelProgress;
     
     @FXML TableView<FileDescriptor> tvFilesOriginal;
-    @FXML TableView<FileDescriptor> tvFilesRenamed;
+    //@FXML TableView<FileDescriptor> tvFilesRenamed;
     
     @FXML TextField txtSourceDirectory;
     @FXML Button btnLoadDirectory;

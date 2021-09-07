@@ -16,6 +16,7 @@ public class FileDescriptor
     File file;
     String name;
     String extension;
+    String newName;
     
     public FileDescriptor(File f)
     {
@@ -56,4 +57,16 @@ public class FileDescriptor
     {
         return extension;
     }        
+
+    public String getNewName()
+    {
+        return newName;
+    }
+
+    public void setNewName(String newName)
+    {
+        this.newName = newName;
+    }
+    
+    
 }

@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -234,81 +233,45 @@
         </VBox>
     </left>
     <center>
-        <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <items>
-                <VBox minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;">
+        <VBox minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-border-width: 2; -fx-border-color: #EEEEEE; -fx-border-radius: 4;" BorderPane.alignment="CENTER">
+            <children>
+                <HBox prefHeight="32.0" prefWidth="600.0" style="-fx-background-color: #FAFAFA;">
                     <children>
-                        <HBox prefHeight="32.0" prefWidth="600.0" style="-fx-background-color: #FAFAFA;">
-                            <children>
-                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                                    <HBox.margin>
-                                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-                                    </HBox.margin>
-                                    <Image url="@/icons/64/folderdocs.png" />
-                                </ImageView>
-                                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Directory Content" textAlignment="JUSTIFY" textFill="#0d6efd">
-                                    <font>
-                                        <Font name="Tahoma" size="14.0" />
-                                    </font>
-                                    <padding>
-                                        <Insets left="8.0" right="8.0" />
-                                    </padding>
-                                    <HBox.margin>
-                                        <Insets bottom="2.0" top="4.0" />
-                                    </HBox.margin>
-                                </Label>
-                            </children>
-                        </HBox>
-                        <TableView fx:id="tvFilesOriginal" maxHeight="1.7976931348623157E308" style="-fx-font-size: 14; -fx-font-family: Bitstream Vera Sans Mono;" VBox.vgrow="ALWAYS">
-                            <VBox.margin>
-                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                            </VBox.margin>
-                            <columnResizePolicy>
-                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                            </columnResizePolicy>
-                        </TableView>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <HBox.margin>
+                                <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                            </HBox.margin>
+                            <Image url="@/icons/64/folderdocs.png" />
+                        </ImageView>
+                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Directory Content" textAlignment="JUSTIFY" textFill="#0d6efd">
+                            <font>
+                                <Font name="Tahoma" size="14.0" />
+                            </font>
+                            <padding>
+                                <Insets left="8.0" right="8.0" />
+                            </padding>
+                            <HBox.margin>
+                                <Insets bottom="2.0" top="4.0" />
+                            </HBox.margin>
+                        </Label>
                     </children>
-                </VBox>
-                <VBox minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;">
-                    <children>
-                        <HBox prefHeight="32.0" prefWidth="600.0" style="-fx-background-color: #FAFAFA;">
-                            <children>
-                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                                    <HBox.margin>
-                                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-                                    </HBox.margin>
-                                    <image>
-                                        <Image url="@/icons/64/profileformat.png" />
-                                    </image>
-                                </ImageView>
-                                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Result Preview" textAlignment="JUSTIFY" textFill="#0d6efd">
-                                    <font>
-                                        <Font name="Tahoma" size="14.0" />
-                                    </font>
-                                    <padding>
-                                        <Insets left="8.0" right="8.0" />
-                                    </padding>
-                                    <HBox.margin>
-                                        <Insets bottom="2.0" top="4.0" />
-                                    </HBox.margin>
-                                </Label>
-                            </children>
-                        </HBox>
-                        <TableView fx:id="tvFilesRenamed" maxHeight="1.7976931348623157E308" style="-fx-font-size: 14; -fx-font-family: Bitstream Vera Sans Mono;" VBox.vgrow="ALWAYS">
-                            <VBox.margin>
-                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                            </VBox.margin>
-                            <columnResizePolicy>
-                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                            </columnResizePolicy>
-                        </TableView>
-                    </children>
-                </VBox>
-            </items>
+                </HBox>
+                <TableView fx:id="tvFilesOriginal" style="-fx-font-size: 14; -fx-font-family: Bitstream Vera Sans Mono;" VBox.vgrow="ALWAYS">
+                    <placeholder>
+                        <Label text=""/>
+                    </placeholder>
+                    <VBox.margin>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                    </VBox.margin>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+            </children>
             <BorderPane.margin>
-                <Insets bottom="4.0" left="4.0" right="4.0" top="8.0" />
+                <Insets bottom="2.0" left="4.0" right="4.0" top="8.0" />
             </BorderPane.margin>
-        </SplitPane>
+        </VBox>
     </center>
     <bottom>
         <VBox fx:id="panelProgress" prefWidth="100.0" BorderPane.alignment="CENTER">

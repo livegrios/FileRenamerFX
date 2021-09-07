@@ -82,8 +82,11 @@ public class TaskRenameFilesPreview extends Task<Void>
                 }
                 
                 newName = rm.apply(fd.getName(), fd.getExtension(), actions, counters);
-                
-                System.out.println(newName);
+                if (fd.getExtension() != null && !fd.getExtension().isEmpty())
+                    fd.setNewName(newName + "." + fd.getExtension());
+                else
+                    fd.setNewName(newName);
+                //System.out.println(newName);
                 
                 app.updateProgressInfo("Analizying File [" + fd.getName() + "]...", kfile/files.size());
                 
@@ -98,6 +101,18 @@ public class TaskRenameFilesPreview extends Task<Void>
     public void done()
     {
         super.done();
+        try
+        {
+            FXUtilities.runAndWait(()->{app.getTableViewFilesOriginal().getColumns().get(3).setVisible(false);
+                                        app.getTableViewFilesOriginal().getColumns().get(3).setVisible(true);
+                                        app.setPanelProgressVisible(false);});
+            
+        } 
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            System.out.println("Non-severe exception.");
+        }
     }
     
     public static int[] locateActionCounterPositions(Action[] actions)

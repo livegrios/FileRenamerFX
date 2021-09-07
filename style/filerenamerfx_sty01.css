@@ -19,8 +19,8 @@
 
 /* color de una fila cuando en raton se encuentra sobre una fila que esta seleccionada*/
 .table-view:row-selection .table-row-cell:filled:selected:hover { 
-    -fx-background-color: #B0BEC5;
-    -fx-text-background-color: #000000;
+    -fx-background-color: #ECEFF1; 
+    -fx-font-weight: bold;
 }
 
 /*color de una fila seleccionada por el usuario*/
