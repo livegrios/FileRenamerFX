@@ -34,7 +34,15 @@ public class ActionExtract extends Action
     @Override
     public String apply(Object fileName) throws Exception
     {        
-        return fileName.toString().substring(from-1, to);
+        if (to <= fileName.toString().length())
+            return fileName.toString().substring(from-1, to);
+        else
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.append(fileName.toString().substring(from-1, fileName.toString().length()));
+            sb.append(new String(new char[to - fileName.toString().length()]).replace("\0", "-"));
+            return sb.toString();
+        }
     }
 
     public int getFrom()

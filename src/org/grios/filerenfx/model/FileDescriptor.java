@@ -67,6 +67,11 @@ public class FileDescriptor
     {
         this.newName = newName;
     }
+
+    public File getFile()
+    {
+        return file;
+    }
     
     
 }

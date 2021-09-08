@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" java-vm-args="-Dprism.order=sw "  href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="FileRenamerFX.jar" size="182633" download="eager" />
+    <jar href="FileRenamerFX.jar" size="332339" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="FileRenamerFX" >
     <param name="requiredFXVersion" value="8.0+"/>

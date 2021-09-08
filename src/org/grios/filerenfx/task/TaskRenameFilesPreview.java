@@ -60,9 +60,10 @@ public class TaskRenameFilesPreview extends Task<Void>
             actions = new Action[paneActions.size()];
             for (PaneAction pa : paneActions)
                 actions[k++] = pa.getAction();
-            
             pos = locateActionCounterPositions(actions);
-            counters = new int[pos.length];
+            
+            if (pos != null)
+                counters = new int[pos.length];
          
             app.updateProgressInfo("Starting file renaming actions...", 0);
             for (FileDescriptor fd : files)

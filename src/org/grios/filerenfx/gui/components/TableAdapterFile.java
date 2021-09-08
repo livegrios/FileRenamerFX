@@ -6,10 +6,12 @@
 package org.grios.filerenfx.gui.components;
 
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
 import javafx.util.Callback;
 import org.grios.filerenfx.model.FileDescriptor;
 
@@ -21,10 +23,40 @@ public class TableAdapterFile
 {   
     public static void adapt(TableView<FileDescriptor> tv, ObservableList<FileDescriptor> files)
     {
+        TableColumn<FileDescriptor, Void> tcRowNumber = new TableColumn<>("");
         TableColumn<FileDescriptor, Void> tcFileIcon = new TableColumn<>("");
-        TableColumn<FileDescriptor, String> tcFileName = new TableColumn<>("File Name");
+        TableColumn<FileDescriptor, String> tcFileName = new TableColumn<>("Current File Name");
         TableColumn<FileDescriptor, String> tcFileExt = new TableColumn<>("Ext.");
         TableColumn<FileDescriptor, String> tcFileNewName = new TableColumn<>("New File Name");
+        
+        tcRowNumber.setCellFactory(new Callback<TableColumn<FileDescriptor, Void>, TableCell<FileDescriptor, Void>>()
+        {
+            @Override
+            public TableCell<FileDescriptor, Void> call(TableColumn<FileDescriptor, Void> param)
+            {
+                TableCell<FileDescriptor, Void> cell = new TableCell<FileDescriptor, Void>()
+                {
+                    @Override
+                    public void updateItem(Void v, boolean value)
+                    {                        
+                        super.updateItem(v, value);
+                        setStyle("-fx-background-color: #ECEFF1;");
+                        if (getTableRow() != null && getTableRow().getItem() != null)
+                        {
+                            setAlignment(Pos.CENTER_RIGHT);
+                            setText("" + (getTableRow().getIndex() + 1));
+                        }
+                        else
+                        {
+                            setGraphic(null);
+                            setText(null);
+                        }
+                    }
+                };
+                
+                return cell;
+            }
+        });
         
         tcFileIcon.setCellFactory(new Callback<TableColumn<FileDescriptor, Void>, TableCell<FileDescriptor, Void>>()
         {
@@ -69,6 +101,7 @@ public class TableAdapterFile
                         super.updateItem(t, value);
                         if (getTableRow() != null && getTableRow().getItem() != null)
                         {
+                            setAlignment(Pos.CENTER_LEFT);
                             FileDescriptor fd = (FileDescriptor) getTableRow().getItem();
                             setText(fd.getName());
                         }
@@ -95,7 +128,8 @@ public class TableAdapterFile
                     {
                         super.updateItem(t, value);
                         if (getTableRow() != null && getTableRow().getItem() != null)
-                        {
+                        {                            
+                            setAlignment(Pos.CENTER_LEFT);
                             FileDescriptor fd = (FileDescriptor) getTableRow().getItem();
                             setText(fd.getExtension());
                         }
@@ -121,8 +155,10 @@ public class TableAdapterFile
                     public void updateItem(String t, boolean value)
                     {
                         super.updateItem(t, value);
+                        setStyle("-fx-text-fill:#2962FF;");
                         if (getTableRow() != null && getTableRow().getItem() != null)
                         {
+                            setAlignment(Pos.CENTER_LEFT);
                             FileDescriptor fd = (FileDescriptor) getTableRow().getItem();
                             setText(fd.getNewName());
                         }
@@ -137,15 +173,15 @@ public class TableAdapterFile
             }
         });
         
+        tcRowNumber.setMinWidth(72);
         tcFileIcon.setMinWidth(32);
         tcFileIcon.setMaxWidth(32);
-        //tcFileName.setPrefWidth(0);
-        //tcFileExt.setPrefWidth(64.0);
-        //tcFileExt.setMinWidth(56.0);
-        //tcFileExt.setMaxWidth(128.0);
+        tcFileName.setPrefWidth(156);
+        tcFileExt.setPrefWidth(72.0);
+        tcFileNewName.setPrefWidth(192);
         
         tv.setItems(files);
         tv.getColumns().clear();
-        tv.getColumns().addAll(tcFileIcon, tcFileName, tcFileExt, tcFileNewName);
+        tv.getColumns().addAll(tcRowNumber, tcFileIcon, tcFileName, tcFileExt, tcFileNewName);
     }
 }

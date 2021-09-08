@@ -86,3 +86,17 @@
    -fx-padding: 0;
    
 }
+
+/*
+.vbox_actions:focused
+{
+    -fx-border-width:2.0;
+    -fx-border-color: #000000;
+}
+
+.vbox_actions:hover
+{
+    -fx-border-width:2.0;
+    -fx-border-color: #000000;
+}
+*/

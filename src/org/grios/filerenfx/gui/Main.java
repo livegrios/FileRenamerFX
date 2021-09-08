@@ -17,8 +17,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -34,6 +36,7 @@ import org.grios.filerenfx.model.FileDescriptor;
 import org.grios.filerenfx.task.FXUtilities;
 import org.grios.filerenfx.task.TaskLoadDirectoryContent;
 import org.grios.filerenfx.task.TaskRenameFilesPreview;
+import org.grios.filerenfx.task.TaskRenameFiles;
 
 /**
  *
@@ -47,7 +50,8 @@ public class Main extends Application
     public static final Color COLOR_FONT_ERROR = Color.web(COLORHEX_FONT_ERROR);
     
     @FXML BorderPane rootPane;
-    //@FXML HBox hboxActions;    
+    
+    @FXML ScrollPane scpActions;
     @FXML VBox vboxActions;    
     @FXML VBox panelProgress;
     
@@ -58,9 +62,11 @@ public class Main extends Application
     @FXML Button btnLoadDirectory;
     @FXML Button btnAddAction;
     @FXML Button btnRemoveAllActions;
-    @FXML Button btnCheckAllActions;
-    
+    @FXML Button btnCheckAllActions;    
+    @FXML Button btnPerformRenaming;
+    @FXML Button btnPerformRenamingSelection;
     @FXML Button btnPerformPreview;    
+    @FXML Button btnConfig;
     
     @FXML Label lblActionsAdded;
     @FXML Label lblActionsCorrect;
@@ -93,6 +99,11 @@ public class Main extends Application
         fxmll.setController(this);
     }
     
+    public Stage getStage()
+    {
+        return window;
+    }
+    
     public TableView<FileDescriptor> getTableViewFilesOriginal()
     {
         return tvFilesOriginal;
@@ -110,6 +121,7 @@ public class Main extends Application
         
         alert = new Alert(Alert.AlertType.NONE);
         alert.initOwner(window);
+        ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image(System.class.getResource("/icons/app/Icon_v.0.1.png").toExternalForm()));
         
         btnLoadDirectory.setOnAction(evt -> { showDirectoryDialog(); });
         
@@ -117,6 +129,7 @@ public class Main extends Application
         btnRemoveAllActions.setOnAction(evt -> {removeAllActions();});
         btnCheckAllActions.setOnAction(evt -> {checkAllActions();});
         
+        btnPerformRenaming.setOnAction(evt->{performRenamingSecure();});
         btnPerformPreview.setOnAction(evt->{performRenamingPreview();});
         
         txtSourceDirectory.setOnKeyReleased(evt -> {
@@ -161,6 +174,7 @@ public class Main extends Application
                 
         window = primaryStage;
         window.initStyle(StageStyle.UNIFIED);
+        window.getIcons().add(new Image(System.class.getResource("/icons/app/Icon_v.0.1.png").toExternalForm()));
         window.setScene(scene);
         window.setTitle("FileRenamerFX");
         window.show();
@@ -183,22 +197,68 @@ public class Main extends Application
     
     public void showAlert(String title, String content, Alert.AlertType t)
     {
-        alert.setTitle(title);
-        alert.setContentText(content);
-        alert.alertTypeProperty().set(t);
-        alert.showAndWait();
+        if (Platform.isFxApplicationThread())
+        {
+            alert.setTitle(title);
+            alert.setContentText(content);
+            alert.alertTypeProperty().set(t);
+            alert.showAndWait();
+        }
+        else
+        {
+            try
+            {
+                FXUtilities.runAndWait(() ->
+                {
+                    alert.setTitle(title);
+                    alert.setContentText(content);
+                    alert.alertTypeProperty().set(t);
+                    alert.showAndWait();
+                });
+            } 
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+        
     }
     
     public void setPanelProgressVisible(boolean value)
     {
-        if (value)
+        if (Platform.isFxApplicationThread())
         {
-            rootPane.setBottom(panelProgress);
+            if (value)
+            {
+                rootPane.setBottom(panelProgress);
+            }
+            else
+            {
+                rootPane.setBottom(null);
+            }
         }
         else
         {
-            rootPane.setBottom(null);
+            try
+            {
+                FXUtilities.runAndWait(() ->
+                {
+                    if (value)
+                    {
+                        rootPane.setBottom(panelProgress);
+                    }
+                    else
+                    {
+                        rootPane.setBottom(null);
+                    }
+                });
+            } 
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
         }
+        
     }
     
     public void updateProgressInfo(String text, double value)
@@ -293,7 +353,7 @@ public class Main extends Application
                     updateActionsInventory();
                 }
             };
-            pa.initComponents();            
+            pa.initComponents();       
             pa.setActionListener(ipal);
             vboxActions.getChildren().add(pa.getRoot());            
         } 
@@ -333,6 +393,14 @@ public class Main extends Application
         }
         
         trfp.doBefore();
+        t.start();
+    }
+    
+    public void performRenamingSecure()
+    {
+        TaskRenameFiles trfs = new TaskRenameFiles(this, tvFilesOriginal.getItems(), actions);
+        Thread t = new Thread(trfs);
+        trfs.doBefore();
         t.start();
     }
     
