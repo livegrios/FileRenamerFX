@@ -16,9 +16,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -30,6 +32,7 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.grios.filerenfx.core.ActionsPersist;
 import org.grios.filerenfx.gui.components.action.IPaneActionListener;
 import org.grios.filerenfx.gui.components.action.PaneAction;
 import org.grios.filerenfx.model.FileDescriptor;
@@ -49,6 +52,8 @@ public class Main extends Application
     public static final Color COLOR_FONT_SUCCESS = Color.web(COLORHEX_FONT_SUCCESS);
     public static final Color COLOR_FONT_ERROR = Color.web(COLORHEX_FONT_ERROR);
     
+    public static final Image ICON_APP = new Image(System.class.getResource("/icons/app/Icon_v.0.1.png").toExternalForm());
+    
     @FXML BorderPane rootPane;
     
     @FXML ScrollPane scpActions;
@@ -65,8 +70,10 @@ public class Main extends Application
     @FXML Button btnCheckAllActions;    
     @FXML Button btnPerformRenaming;
     @FXML Button btnPerformRenamingSelection;
-    @FXML Button btnPerformPreview;    
-    //@FXML Button btnConfig;
+    @FXML Button btnPerformPreview;
+    @FXML SplitMenuButton btnConfig;
+    
+    @FXML MenuItem mnuiAbout;
     
     @FXML Label lblActionsAdded;
     @FXML Label lblActionsCorrect;
@@ -82,7 +89,7 @@ public class Main extends Application
     Scene scene;    
     FXMLLoader fxmll;
     
-    
+    WindowAbout windowAbout;
     
     FileChooser fc;
     DirectoryChooser dc;
@@ -109,8 +116,11 @@ public class Main extends Application
         return tvFilesOriginal;
     }
     
-    private void initComponents()
+    private void initComponents() throws Exception
     {
+        windowAbout = new WindowAbout(this);
+        windowAbout.init();
+        
         actions = new ArrayList<>();
         
         dc = new DirectoryChooser();
@@ -121,7 +131,7 @@ public class Main extends Application
         
         alert = new Alert(Alert.AlertType.NONE);
         alert.initOwner(window);
-        ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image(System.class.getResource("/icons/app/Icon_v.0.1.png").toExternalForm()));
+        ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(ICON_APP);
         
         btnLoadDirectory.setOnAction(evt -> { showDirectoryDialog(); });
         
@@ -132,6 +142,9 @@ public class Main extends Application
         btnPerformRenaming.setOnAction(evt->{performRenamingSecure(false);});
         btnPerformRenamingSelection.setOnAction(evt->{performRenamingSecure(true);});
         btnPerformPreview.setOnAction(evt->{performRenamingPreview();});
+        
+        btnConfig.setOnAction(evt->{});
+        mnuiAbout.setOnAction(evt->{showWindowAbout();});
         
         txtSourceDirectory.setOnKeyReleased(evt -> {
             if (evt.getCode() == KeyCode.ENTER)
@@ -146,6 +159,35 @@ public class Main extends Application
         });
         
         tvFilesOriginal.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        
+        scene.setOnKeyReleased(evt->{
+            switch(evt.getCode())
+            {
+                case F1:
+                    showWindowAbout();
+                    break;
+                case F2: 
+                    if (evt.isControlDown() && evt.isShiftDown())
+                        removeAllActions();
+                    else if (evt.isShiftDown())
+                        removeLastAction();
+                    else
+                        addAction();
+                    break;
+                case F3:
+                    checkAllActions();
+                    break;
+                case F4:
+                    performRenamingPreview();
+                    break;
+                case F5:
+                    performRenamingSecure(false);
+                    break;
+                case F6:
+                    performRenamingSecure(true);
+                    break;
+            }
+        });
         
         setPanelProgressVisible(false);
     }
@@ -167,6 +209,8 @@ public class Main extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
+        
+        
         fxmll.load();
         
         scene = new Scene(fxmll.getRoot());
@@ -177,9 +221,10 @@ public class Main extends Application
                 
         window = primaryStage;
         window.initStyle(StageStyle.UNIFIED);
-        window.getIcons().add(new Image(System.class.getResource("/icons/app/Icon_v.0.1.png").toExternalForm()));
+        window.getIcons().add(ICON_APP);
         window.setScene(scene);
         window.setTitle("FileRenamerFX");
+        
         window.show();
     }    
     
@@ -225,6 +270,11 @@ public class Main extends Application
             }
         }
         
+    }
+    
+    public void showWindowAbout()
+    {
+        windowAbout.show();
     }
     
     public void setPanelProgressVisible(boolean value)
@@ -368,6 +418,18 @@ public class Main extends Application
         updateActionsInventory();
     }
     
+    public void removeLastAction()
+    {
+        PaneAction pa = null;
+        if (actions.size() > 0)
+        {
+            pa = actions.get(actions.size() - 1);
+            actions.remove(pa);
+            vboxActions.getChildren().remove(pa.getRoot());
+            updateActionsInventory();
+        }
+    }
+    
     private void performRenamingPreview()
     {
         TaskRenameFilesPreview trfp = new TaskRenameFilesPreview(this, tvFilesOriginal.getItems(), actions);
@@ -420,5 +482,5 @@ public class Main extends Application
         vboxActions.getChildren().clear();
         actions.clear();
         updateActionsInventory();
-    }
+    }    
 }

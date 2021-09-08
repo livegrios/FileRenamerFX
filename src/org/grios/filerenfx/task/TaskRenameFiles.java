@@ -60,7 +60,8 @@ public class TaskRenameFiles extends Task<Void>
     protected Void call() throws Exception
     {
         String s = null;
-        int k = 0;        
+        int k = 0;
+        int counter = 0;
         
         // Check that a valid directory was selected:
         if (files == null || files.isEmpty())
@@ -92,9 +93,9 @@ public class TaskRenameFiles extends Task<Void>
                 }
                 
                 app.updateProgressInfo("Starting renaming process...", 0);
-                k = 0;
+                k = -1;           
                 for (FileDescriptor fd:files)
-                {     
+                {                         
                     k++;
                     try
                     {
@@ -219,7 +220,7 @@ public class TaskRenameFiles extends Task<Void>
             else
             {
                 for (int i = 0; i < pos.length; i++)
-                    counters[i] += ((ActionCounter) actions[pos[i]]).getStep();
+                    counters[i] = k * ((ActionCounter) actions[pos[i]]).getStep();
             }
         }
 

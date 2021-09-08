@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -16,79 +17,88 @@
     <children>
         <HBox prefHeight="64.0" prefWidth="200.0">
             <SplitMenuButton fx:id="btnActionType" graphicTextGap="8.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-base: #BBDEFB;" text="Extract Filename" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
-            <items>
-                <MenuItem fx:id="mnuiExtract" mnemonicParsing="false" style="-fx-font-size: 14; -fx-font-family: Tahoma;" text="Extract">
-                    <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                            <Image url="@/icons/64/columnraw2.png" />
-                        </ImageView>
-                    </graphic>
-                </MenuItem>
-                <MenuItem fx:id="mnuiCounter" mnemonicParsing="false" style="-fx-font-size: 14; -fx-font-family: Tahoma;" text="Counter">
-                    <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                            <Image url="@/icons/64/Count-tool-icon.png" />
-                        </ImageView>
-                    </graphic>
-                </MenuItem>
-                <MenuItem fx:id="mnuiConstant" mnemonicParsing="false" style="-fx-font-size: 14; -fx-font-family: Tahoma;" text="Constant">
-                    <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                            <Image url="@/icons/64/text.png" />
-                        </ImageView>
-                    </graphic>
-                </MenuItem>
-                <MenuItem fx:id="mnuiRemove" mnemonicParsing="false" style="-fx-font-size: 14; -fx-font-family: Tahoma;" text="Remove">                    
-                    <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                            <HBox.margin>
-                                <Insets bottom="0.0" left="16.0" top="0.0" />
-                            </HBox.margin>
-                            <Image url="@/icons/64/delete-xxl.png" />
-                        </ImageView>
-                    </graphic>
-                </MenuItem>
-            </items>
-            <font>
-                <Font name="Tahoma" size="14.0" />
-            </font>
-            <graphic>
-                <ImageView fx:id="imgvActionIcon" fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" />
-            </graphic>
-        </SplitMenuButton>
-         <VBox maxHeight="1.7976931348623157E308" prefWidth="40.0">
-            <children>
-               <Button fx:id="btnMoveUp" mnemonicParsing="false" prefHeight="28.0" prefWidth="40.0" style="-fx-base: rgba(255, 255, 255, 1.0);">
-                  <VBox.margin>
-                     <Insets />
-                  </VBox.margin>
-                  <graphic>
-                      <ImageView fitHeight="16.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                          <Image url="@/icons/64/triangleup.png" />
-                      </ImageView>
-                  </graphic>
-               </Button>
-               <Button fx:id="btnMoveDown" mnemonicParsing="false" prefHeight="28.0" prefWidth="40.0" style="-fx-base: rgba(255, 255, 255, 1.0);">
-                  <VBox.margin>
-                     <Insets top="14.0" />
-                  </VBox.margin>
-                  <graphic>
-                      <ImageView fitHeight="16.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                          <Image url="@/icons/64/triangledown.png" />
-                      </ImageView>
-                  </graphic>
-               </Button>
-            </children>
-            <HBox.margin>
-               <Insets left="4.0" />
-            </HBox.margin>
-         </VBox>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-         <padding>
-            <Insets bottom="4.0" top="2.0" />
-         </padding>
+                <items>
+                    <MenuItem fx:id="mnuiExtract" mnemonicParsing="false" style="-fx-font-size: 14; -fx-font-family: Tahoma;" text="Extract">
+                        <graphic>
+                            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@/icons/64/columnraw2.png" />
+                            </ImageView>
+                        </graphic>
+                    </MenuItem>
+                    <MenuItem fx:id="mnuiCounter" mnemonicParsing="false" style="-fx-font-size: 14; -fx-font-family: Tahoma;" text="Counter">
+                        <graphic>
+                            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@/icons/64/Count-tool-icon.png" />
+                            </ImageView>
+                        </graphic>
+                    </MenuItem>
+                    <MenuItem fx:id="mnuiConstant" mnemonicParsing="false" style="-fx-font-size: 14; -fx-font-family: Tahoma;" text="Constant">
+                        <graphic>
+                            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@/icons/64/text.png" />
+                            </ImageView>
+                        </graphic>
+                    </MenuItem>
+                    <MenuItem fx:id="mnuiRemove" mnemonicParsing="false" style="-fx-font-size: 14; -fx-font-family: Tahoma;" text="Remove">                    
+                        <graphic>
+                            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                <HBox.margin>
+                                    <Insets bottom="0.0" left="16.0" top="0.0" />
+                                </HBox.margin>
+                                <Image url="@/icons/64/delete-xxl.png" />
+                            </ImageView>
+                        </graphic>
+                    </MenuItem>
+                </items>
+                <font>
+                    <Font name="Tahoma" size="14.0" />
+                </font>
+                <graphic>
+                    <ImageView fx:id="imgvActionIcon" fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" />
+                </graphic>
+                <tooltip>
+                    <Tooltip text="Press this button to review and check that this action is correctly specified." />
+                </tooltip>
+            </SplitMenuButton>
+            <VBox maxHeight="1.7976931348623157E308" prefWidth="40.0">
+                <children>
+                    <Button fx:id="btnMoveUp" mnemonicParsing="false" prefHeight="28.0" prefWidth="40.0" style="-fx-base: rgba(255, 255, 255, 1.0);">
+                        <VBox.margin>
+                            <Insets />
+                        </VBox.margin>
+                        <graphic>
+                            <ImageView fitHeight="16.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@/icons/64/triangleup.png" />
+                            </ImageView>
+                        </graphic>
+                        <tooltip>
+                            <Tooltip text="Move this action one position Up to be processed before those below from it. Alternatively, press [Ctrl + Up] keys." />
+                        </tooltip>
+                    </Button>
+                    <Button fx:id="btnMoveDown" mnemonicParsing="false" prefHeight="28.0" prefWidth="40.0" style="-fx-base: rgba(255, 255, 255, 1.0);">
+                        <VBox.margin>
+                            <Insets top="14.0" />
+                        </VBox.margin>
+                        <graphic>
+                            <ImageView fitHeight="16.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@/icons/64/triangledown.png" />
+                            </ImageView>
+                        </graphic>
+                        <tooltip>
+                            <Tooltip text="Move this action one position Down to be processed after those above from it. Alternatively, press [Ctrl + Down] keys." />
+                        </tooltip>
+                    </Button>
+                </children>
+                <HBox.margin>
+                    <Insets left="4.0" />
+                </HBox.margin>
+            </VBox>
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
+            <padding>
+                <Insets bottom="4.0" top="2.0" />
+            </padding>
         </HBox>
         
         <HBox fx:id="hboxExtract" prefHeight="36.0">
@@ -105,6 +115,9 @@
                     <font>
                         <Font name="Tahoma" size="14.0" />
                     </font>
+                    <tooltip>
+                        <Tooltip text="Specify the starting position where characters will be extracted from the file name." />
+                    </tooltip>
                 </TextField>
                 <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" prefHeight="36.0" text="How many:" HBox.hgrow="ALWAYS">
                     <font>
@@ -121,6 +134,9 @@
                     <font>
                         <Font name="Tahoma" size="14.0" />
                     </font>
+                    <tooltip>
+                        <Tooltip text="Specify how many characters will be extracted starting from the previous specified position value." />
+                    </tooltip>
                 </TextField>
             </children>
         </HBox>
@@ -138,6 +154,9 @@
                     <HBox.margin>
                         <Insets bottom="4.0" left="4.0" top="4.0" />
                     </HBox.margin>
+                    <tooltip>
+                        <Tooltip text="Use the '0' digit to specify the number of digits for this counter. This pattern will fill with left-zeros your new file names." />
+                    </tooltip>
                 </TextField>
                 <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="StC:">
                     <font>
@@ -154,6 +173,9 @@
                     <HBox.margin>
                         <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                     </HBox.margin>
+                    <tooltip>
+                        <Tooltip text="Specify how the counter increments will be occurs for each file." />
+                    </tooltip>
                 </TextField>
                 <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="SpC:">
                     <font>
@@ -184,6 +206,9 @@
                     <HBox.margin>
                         <Insets bottom="4.0" left="4.0" top="4.0" />
                     </HBox.margin>
+                    <tooltip>
+                        <Tooltip text="Specify a text in your new file names that will no change." />
+                    </tooltip>
                 </TextField>
             </children>
         </HBox>

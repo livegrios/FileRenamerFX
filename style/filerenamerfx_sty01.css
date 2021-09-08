@@ -87,6 +87,13 @@
    
 }
 
+.tooltip{
+    -fx-font-size: 14px; 
+    -fx-font-family:'Tahoma';
+    -fx-background-color: rgba(16, 64, 128, 0.5);
+    -fx-text-fill: #FFFFFF;
+}
+
 /*
 .vbox_actions:focused
 {

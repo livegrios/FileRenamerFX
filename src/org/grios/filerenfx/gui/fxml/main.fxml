@@ -10,6 +10,7 @@
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -20,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="BorderPane" fx:id="rootPane" prefHeight="520.0" prefWidth="1024.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane id="BorderPane" fx:id="rootPane" prefHeight="520.0" prefWidth="1024.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.0" xmlns:fx="http://javafx.com/fxml/1">
     <top>
         <VBox prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
@@ -39,6 +40,9 @@
                             <HBox.margin>
                                 <Insets bottom="4.0" left="4.0" top="6.0" />
                             </HBox.margin>
+                            <tooltip>
+                                <Tooltip text="Type a directory path and press Enter to load their contained files." />
+                            </tooltip>
                         </TextField>
                         <Button fx:id="btnLoadDirectory" mnemonicParsing="false" prefHeight="32.0" prefWidth="48.0" style="-fx-base: rgba(255, 255, 255, 1.0);">
                             <HBox.margin>
@@ -81,6 +85,9 @@
                                     <Image url="@/icons/64/plus.png" />
                                 </ImageView>
                             </graphic>
+                            <tooltip>
+                                <Tooltip text="Add an Action that allows you to generate new names for your files. Alternatively, press [F2]." />
+                            </tooltip>
                         </Button>
                         <Button fx:id="btnRemoveAllActions" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="42.0" style="-fx-base: #ffffff;">
                             <font>
@@ -99,6 +106,9 @@
                             <HBox.margin>
                                 <Insets bottom="4.0" left="4.0" top="4.0" />
                             </HBox.margin>
+                            <tooltip>
+                                <Tooltip text="Remove all current specified actions." />
+                            </tooltip>
                         </Button>
                         <Button fx:id="btnCheckAllActions" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="42.0" style="-fx-base: #ffffff;">
                             <font>
@@ -117,6 +127,9 @@
                             <HBox.margin>
                                 <Insets bottom="4.0" left="4.0" top="4.0" />
                             </HBox.margin>
+                            <tooltip>
+                                <Tooltip text="Review and check that all your defined actions are correctly specified. Alternatively, press [F3]." />
+                            </tooltip>
                         </Button>
                         <Button fx:id="btnPerformPreview" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="42.0" style="-fx-base: #ffffff;">
                             <font>
@@ -133,6 +146,9 @@
                                     <Image url="@/icons/64/stamparrowright.png" />
                                 </ImageView>
                             </graphic>
+                            <tooltip>
+                                <Tooltip text="Compute the new file names whithout apply the renaming in order to let you to know the new names that they will have. Alternatively, press [F4]." />
+                            </tooltip>
                         </Button>
                         <Button fx:id="btnPerformRenaming" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="42.0" style="-fx-base: #ffffff;">
                             <font>
@@ -149,6 +165,9 @@
                                     <Image url="@/icons/64/play.png" />
                                 </ImageView>
                             </graphic>
+                            <tooltip>
+                                <Tooltip text="Apply the actions to rename all files. previously loaded. Alternatively, press [F5]." />
+                            </tooltip>
                         </Button>
                         <Button fx:id="btnPerformRenamingSelection" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="42.0" style="-fx-base: #ffffff;">
                             <font>
@@ -167,6 +186,9 @@
                             <HBox.margin>
                                 <Insets bottom="4.0" left="4.0" top="4.0" />
                             </HBox.margin>
+                            <tooltip>
+                                <Tooltip text="Apply the actions to rename only selected files. Alternatively, press [F6] to activate it." />
+                            </tooltip>
                         </Button>
                         <SplitMenuButton fx:id="btnConfig" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefWidth="42.0" style="-fx-base: #ffffff;">
                             <font>
@@ -175,33 +197,23 @@
                             <graphic>
                                 <ImageView fitHeight="32.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@/icons/64/Save.png" />
+                                        <Image url="@/icons/64/settings.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
                             <HBox.margin>
                                 <Insets bottom="4.0" left="4.0" top="4.0" />
                             </HBox.margin>
-                            <items>
-                                <MenuItem mnemonicParsing="false" style="-fx-font-size: 14; -fx-font-family: Tahoma;" text="Quick Help">
+                            <items>                                
+                                <MenuItem fx:id="mnuiAbout" mnemonicParsing="false" style="-fx-font-size: 14; -fx-font-family: Tahoma;" text="About FileRenamerFX...">
                                     <graphic>
                                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@/icons/64/settings.png" />
+                                                <Image url="@/icons/app/Icon_v.0.1.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </MenuItem>
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" style="-fx-font-size: 14; -fx-font-family: Tahoma;" text="About FileRenamerFX...">
-                           <graphic>
-                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@/icons/app/Icon_v.0.1.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </MenuItem>
                             </items>
                         </SplitMenuButton>                  
                     </children>
