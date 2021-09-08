@@ -104,8 +104,8 @@ public class TaskRenameFilesPreview extends Task<Void>
         super.done();
         try
         {
-            FXUtilities.runAndWait(()->{app.getTableViewFilesOriginal().getColumns().get(3).setVisible(false);
-                                        app.getTableViewFilesOriginal().getColumns().get(3).setVisible(true);
+            FXUtilities.runAndWait(()->{app.getTableViewFilesOriginal().getColumns().get(0).setVisible(false);
+                                        app.getTableViewFilesOriginal().getColumns().get(0).setVisible(true);
                                         app.setPanelProgressVisible(false);});
             
         } 

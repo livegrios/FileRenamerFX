@@ -18,12 +18,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
@@ -66,7 +66,7 @@ public class Main extends Application
     @FXML Button btnPerformRenaming;
     @FXML Button btnPerformRenamingSelection;
     @FXML Button btnPerformPreview;    
-    @FXML Button btnConfig;
+    //@FXML Button btnConfig;
     
     @FXML Label lblActionsAdded;
     @FXML Label lblActionsCorrect;
@@ -129,7 +129,8 @@ public class Main extends Application
         btnRemoveAllActions.setOnAction(evt -> {removeAllActions();});
         btnCheckAllActions.setOnAction(evt -> {checkAllActions();});
         
-        btnPerformRenaming.setOnAction(evt->{performRenamingSecure();});
+        btnPerformRenaming.setOnAction(evt->{performRenamingSecure(false);});
+        btnPerformRenamingSelection.setOnAction(evt->{performRenamingSecure(true);});
         btnPerformPreview.setOnAction(evt->{performRenamingPreview();});
         
         txtSourceDirectory.setOnKeyReleased(evt -> {
@@ -143,6 +144,8 @@ public class Main extends Application
                     loadDirectoryContents(txtSourceDirectory.getText());
             }
         });
+        
+        tvFilesOriginal.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         
         setPanelProgressVisible(false);
     }
@@ -396,9 +399,11 @@ public class Main extends Application
         t.start();
     }
     
-    public void performRenamingSecure()
+    public void performRenamingSecure(boolean onlySelected)
     {
-        TaskRenameFiles trfs = new TaskRenameFiles(this, tvFilesOriginal.getItems(), actions);
+        TaskRenameFiles trfs = new TaskRenameFiles(this, 
+                                                    onlySelected ? tvFilesOriginal.getSelectionModel().getSelectedItems() : tvFilesOriginal.getItems(), 
+                                                    actions);
         Thread t = new Thread(trfs);
         trfs.doBefore();
         t.start();

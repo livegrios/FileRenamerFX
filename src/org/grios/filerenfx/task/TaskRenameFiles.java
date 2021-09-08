@@ -140,7 +140,19 @@ public class TaskRenameFiles extends Task<Void>
     public void done()
     {
         super.done();
-        app.setPanelProgressVisible(false);
+        //app.setPanelProgressVisible(false);        
+        try
+        {
+            FXUtilities.runAndWait(()->{app.getTableViewFilesOriginal().getColumns().get(0).setVisible(false);
+                                        app.getTableViewFilesOriginal().getColumns().get(0).setVisible(true);
+                                        app.setPanelProgressVisible(false);});
+            
+        } 
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            System.out.println("Non-severe exception.");
+        }
     }
     
     private void showConfirmAlert(String title, String content)
