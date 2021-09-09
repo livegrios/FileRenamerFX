@@ -43,4 +43,15 @@ This actions only requires two values: the **start** position begining in **1** 
 ### Counter
 ![Alt text](readme/images/02_ActionCounter_NotChecked.png?raw=true "FileRenamerFX - Counter action.")
 
-Extract action is useful when it is need to extract characters from the original file name. 
+Counter action is useful to attach an incremental value to the file name. Also, a numbering pattern is possible to be defined 
+in order to keep the new file names according to naming patterns. The numbering pattern is responsible for example, to fill with left-leading zeros 
+the new file name. Using this approach the new file names can be expressed for example, as follows: MyFile0001.txt, MyFile0002.txt, ... MyFile9999.txt.
+
+### Constant
+![Alt text](readme/images/02_ActionConstant_NotChecked.png?raw=true "FileRenamerFX - Constant action.")
+
+Constant action allows to define static text for the new file name. This text will be include in the new name of all files that will be renamed.
+
+## Basic Example
+
+## Known Issues
