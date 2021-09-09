@@ -27,7 +27,9 @@ After the process loading is finished, the names of contained files and some cor
 
 ### Actions
 The application is based in the *blocks* concept, which allows to define and configure a set of specific actions in an easy way. 
-This actions represents the operations that will be performed when the renaming process is called after.
+This actions represents the operations that will be performed when the renaming process is called after. 
+Also, is possible to remove actions or change their order of precedence from a top-bottom point of view where the top action
+will be the first in be applied in the renaming process.
 
 ![Alt text](readme/images/03_ActionTypes.png?raw=true "FileRenamerFX - Action types")
 ### Action types
@@ -53,5 +55,18 @@ the new file name. Using this approach the new file names can be expressed for e
 Constant action allows to define static text for the new file name. This text will be include in the new name of all files that will be renamed.
 
 ## Basic Example
+In this basic example, the renaming of a set of 5000 png files will be performed by using all types of available actions.
+In the next image, a screenshot of the files contained in some directory is illustrated:
+
+![Alt text](readme/images/10_OriginalFiles.png?raw=true "FileRenamerFX - Original files.")
+
+As it can be observed, the initial file names follows some naming convention (or may not). For this example, all those files are need to
+be renamed following the next pattern: **XXX_Testing_YYYY.png**. Where **XXX** are the first three characters of the file name. The **_Testing_** word is a constant text for all file names and the **YYYY** term means a numbering pattern with 4 digits where is the need to put leading lef-zeros when counter numbering is less than 1000.
+
+1. The first step after the application is running is to select a directory and load their contents.
+
+2. The next step
+
+After the directory contents, 
 
 ## Known Issues
