@@ -65,8 +65,14 @@ be renamed following the next pattern: **XXX_Testing_YYYY.png**. Where **XXX** a
 
 1. The first step after the application is running is to select a directory and load their contents.
 
-2. The next step
+2. The next step is to define the corresponding actions that allow to rename the files in the desired way. You can add actions by using the *add button* from the tool bar or by pressing **F2** key.
 
-After the directory contents, 
+   ![Alt text](readme/images/06_ActionsNotChecked_01.png?raw=true "FileRenamerFX - Actions definition.")
+   
+   
+
+3. After renaming actions were defined, they must be validated in order to assure that values are valid and the renaming process will be conducted adequately.
+
+4. 
 
 ## Known Issues
