@@ -65,7 +65,7 @@ be renamed following the next pattern: **XXX_Testing_YYYY.png**. Where **XXX** a
 
 1. The first step after the application is running is to select a directory and load their contents.
 
-2. The next step is to define the corresponding actions that allow to rename the files in the desired way. You can add actions by using the *add button* ![Alt text](readme/images/13_01_ButtonAddAction.png?raw=true "FileRenamerFX - Add Action.") from the tool bar or by pressing **F2** key. In addition, it is possible to remove an action by selecting the *remove* option in the main action button or by pressing **[Shift + F2]** keys. 
+2. The next step is to define the corresponding actions that allow to rename the files in the desired way. You can add actions by using the *add button* ![Alt text](readme/images/13_01_ButtonAddAction.png?raw=true "FileRenamerFX - Add Action.") from the tool bar or by pressing **[F2]** key. In addition, it is possible to remove an action by selecting the *remove* option in the main action button or by pressing **[Shift + F2]** keys. 
 
 ![Alt text](readme/images/14_RemoveAction.png?raw=true "FileRenamerFX - Remove action.")
 
@@ -75,8 +75,8 @@ Next figure illustrate the actions defined for the described example in this gui
 
 ![Alt text](readme/images/06_ActionsNotChecked_01.png?raw=true "FileRenamerFX - Actions definition.")
      
-3. After the renaming actions were defined, they must be validated in order to assure that values are valid and the renaming process will be conducted adequately. This can be done by clicking on *Check all actions* button ![Alt text](readme/images/13_03_ButtonCheckAllActions.png.png?raw=true "FileRenamerFX - Add Action.") or pressing **[F4]** key. In addition, each action can be validated by pressing their main button. If some actions has an error, the application will launch a message window indicating were the problem occurred. It is highly recommended to not continue to next step until remaining error are present in action definitions.
+3. After the renaming actions were defined, they must be validated in order to assure that values are valid and the renaming process will be conducted adequately. This can be done by clicking on *Check all actions* button ![Alt text](readme/images/13_03_ButtonCheckAllActions.png.png?raw=true "FileRenamerFX - Add Action.") or pressing **[F3]** key. In addition, each action can be validated by pressing their main button. If some actions has an error, the application will launch a message window indicating were the problem occurred. It is highly recommended to not continue to next step until remaining error are present in action definitions.
 
-4. When all your actions were validated, next step is to perform a renaming preview in order to know the new name of each file. It is highly recommended perform this step before to proced to the renaming. There it must be considered that file renaming is an undoable operation.
+4. When all your actions were validated, next step is to perform a renaming preview in order to know the new name of each file. It is highly recommended perform this step before to proceed with the renaming task considering that, changing a file name is an undoable operation. This step can be performed by clicking in button "Rename preview" ![Alt text](readme/images/13_04_ButtonRenamingPreview.png.png?raw=true "FileRenamerFX - Add Action.") or by pressing **[F4]** key.
 
 ## Known Issues
