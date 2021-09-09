@@ -33,7 +33,14 @@ This actions represents the operations that will be performed when the renaming 
 ### Action types
 At this very earlier version, only three basic action types are defined: Extraction, Counter and Constant.
 #### Extract
+![Alt text](readme/images/02_ActionExtract_NotChecked.png?raw=true "FileRenamerFX - Extract action.")
+
 Extract action is useful when it is need to extract characters from the original file name. 
 For example, if the directory contains a set of files named as: PSN__0001.png, NSN_45.png, ..., PPN_AX3.png,
-and for the renaming operation is necessary to extract the initial four characters, the *Extract* action is useful.
-This actions only requires two values: the *start* position begining in *1* and the number of characters to be extracted which minimum valid value is *1*.
+and for the renaming operation is necessary to extract the initial four characters, the **Extract** action is useful.
+This actions only requires two values: the **start** position begining in **1** as the minimum valid value and the number of characters to be extracted which minimum valid value is **1**.
+
+### Counter
+![Alt text](readme/images/02_ActionCounter_NotChecked.png?raw=true "FileRenamerFX - Counter action.")
+
+Extract action is useful when it is need to extract characters from the original file name. 
