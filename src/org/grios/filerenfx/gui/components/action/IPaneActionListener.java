@@ -1,13 +1,19 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Project:    FileRenamerFX
+ *  Artifact:   IPaneActionListener.java
+ *  Version:    0.1
+ *  Date:       2021-09-09 20:03:00
+ *  Author:     Miguel Angel Gil Rios (LiveGrios)
+ *  Email:      angel.grios@gmail.com
+ *  Comments:   This is the first proposal code.
  */
 package org.grios.filerenfx.gui.components.action;
 
 /**
- *
- * @author LiveGrios
+ *  A custom Java Interface to define events that occurs during
+ *  action checking and related tasks as defined in the abstract
+ *  methods name.
+ *  @author LiveGrios
  */
 public interface IPaneActionListener
 {

@@ -1,26 +1,28 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Project:    FileRenamerFX
+ *  Artifact:   WindowAbout.java
+ *  Version:    0.1
+ *  Date:       2021-09-09 20:03:00
+ *  Author:     Miguel Angel Gil Rios (LiveGrios)
+ *  Email:      angel.grios@gmail.com
+ *  Comments:   This is the first proposal code.
  */
 package org.grios.filerenfx.gui;
 
 import java.io.File;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 /**
- *
- * @author LiveGrios
+ *  This class is the JavaFX Stage that will display the
+ *  about information.
+ *  @author LiveGrios
  */
 public class WindowAbout extends Stage
 {    

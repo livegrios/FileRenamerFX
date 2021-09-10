@@ -1,20 +1,26 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Project:    FileRenamerFX
+ *  Artifact:   Renamer.java
+ *  Version:    0.1
+ *  Date:       2021-09-09 20:03:00
+ *  Author:     Miguel Angel Gil Rios (LiveGrios)
+ *  Email:      angel.grios@gmail.com
+ *  Comments:   First code proposal.
  */
 package org.grios.filerenfx.core.parse;
 
 import java.util.List;
 
 /**
- *
- * @author LiveGrios
+ *  This class contains the method to process actions and generate new
+ *  file names.
+ *  @author LiveGrios
  */
 public class Renamer
 {
     /**
-     * 
+     * This method processes a set of actions in order to compute
+     * the new file name based on them.
      * @param fname     The Filename whithout extension.
      * @param ext       The File Extension.
      * @param actions   The array of renaming actions to be aplied.

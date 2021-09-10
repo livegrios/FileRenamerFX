@@ -1,13 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Project:    FileRenamerFX
+ *  Artifact:   Action.java
+ *  Version:    0.1
+ *  Date:       2021-09-09 20:03:00
+ *  Author:     Miguel Angel Gil Rios (LiveGrios)
+ *  Email:      angel.grios@gmail.com
+ *  Comments:   First code proposal.
  */
 package org.grios.filerenfx.core.parse;
 
 /**
- *
- * @author LiveGrios
+ *  This class represents the concept of an Action which defines
+ *  an operation to generate new file names or part of the new name.
+ *  @author LiveGrios
  */
 public abstract class Action
 {

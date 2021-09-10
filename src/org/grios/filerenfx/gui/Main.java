@@ -1,7 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Project:    FileRenamerFX
+ *  Artifact:   Main.java
+ *  Version:    0.1
+ *  Date:       2021-09-09 20:03:00
+ *  Author:     Miguel Angel Gil Rios (LiveGrios)
+ *  Email:      angel.grios@gmail.com
+ *  Comments:   This is the main entry point to the project execution.
  */
 package org.grios.filerenfx.gui;
 
@@ -32,7 +36,6 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.grios.filerenfx.core.ActionsPersist;
 import org.grios.filerenfx.gui.components.action.IPaneActionListener;
 import org.grios.filerenfx.gui.components.action.PaneAction;
 import org.grios.filerenfx.model.FileDescriptor;
@@ -42,8 +45,8 @@ import org.grios.filerenfx.task.TaskRenameFilesPreview;
 import org.grios.filerenfx.task.TaskRenameFiles;
 
 /**
- *
- * @author LiveGrios
+ *  This is the main class of the project.
+ *  @author LiveGrios
  */
 public class Main extends Application
 {

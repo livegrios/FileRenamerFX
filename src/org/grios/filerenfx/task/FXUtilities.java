@@ -1,3 +1,14 @@
+/*
+ *  Project:    FileRenamerFX
+ *  Artifact:   FXUtilities.java
+ *  Version:    0.1
+ *  Date:       2013-01-01 00:00:00
+ *  Author:     Hendrik Ebbers
+ *  Email:      -
+ *  Git:        https://github.com/hendrikebbers
+ *  Comments:   Taken from:
+                https://guigarage.com/2013/01/invokeandwait-for-javafx/
+ */
 package org.grios.filerenfx.task;
 
 import java.util.concurrent.ExecutionException;
@@ -10,7 +21,7 @@ import javafx.application.Platform;
 /**
  * General JavaFX utilities
  * 
- * @author hendrikebbers
+ * @author Hendrik Ebbers
  * 
  */
 public class FXUtilities {

@@ -1,13 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Project:    FileRenamerFX
+ *  Artifact:   ActionConstant.java
+ *  Version:    0.1
+ *  Date:       2021-09-09 20:03:00
+ *  Author:     Miguel Angel Gil Rios (LiveGrios)
+ *  Email:      angel.grios@gmail.com
+ *  Comments:   First code proposal.
  */
 package org.grios.filerenfx.core.parse;
 
 /**
- *
- * @author LiveGrios
+ *  This class implements the functionality to put a constant string in the 
+ *  new file names.
+ *  @author LiveGrios
  */
 public class ActionConstant extends Action
 {

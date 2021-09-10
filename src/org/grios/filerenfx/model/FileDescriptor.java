@@ -1,15 +1,21 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Project:    FileRenamerFX
+ *  Artifact:   FileDescriptor.java
+ *  Version:    0.1
+ *  Date:       2021-09-09 20:03:00
+ *  Author:     Miguel Angel Gil Rios (LiveGrios)
+ *  Email:      angel.grios@gmail.com
+ *  Comments:   This is the first proposal code.
  */
 package org.grios.filerenfx.model;
 
 import java.io.File;
 
 /**
- *
- * @author LiveGrios
+ *  This is a model class who describes the properties of a file such as
+ *  its new name, extension and the proper java.io.File object who contains 
+ *  a reference to the physical file.
+ *  @author LiveGrios
  */
 public class FileDescriptor
 {

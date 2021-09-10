@@ -1,7 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Project:    FileRenamerFX
+ *  Artifact:   TableAdapterFile.java
+ *  Version:    0.1
+ *  Date:       2021-09-09 20:03:00
+ *  Author:     Miguel Angel Gil Rios (LiveGrios)
+ *  Email:      angel.grios@gmail.com
+ *  Comments:   This is the first proposal code.
  */
 package org.grios.filerenfx.gui.components;
 
@@ -16,11 +20,18 @@ import javafx.util.Callback;
 import org.grios.filerenfx.model.FileDescriptor;
 
 /**
- *
- * @author LiveGrios
+ *  This class contains the methods to create columns and their corresponding
+ *  renderers in order to display information of the loaded files.
+ *  @author LiveGrios
  */
 public class TableAdapterFile
 {   
+    /**
+     * This method creates the TableColumns and their respective renderers 
+     * that will contain the files information.
+     * @param tv
+     * @param files 
+     */
     public static void adapt(TableView<FileDescriptor> tv, ObservableList<FileDescriptor> files)
     {
         TableColumn<FileDescriptor, Void> tcRowNumber = new TableColumn<>("");

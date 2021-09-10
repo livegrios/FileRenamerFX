@@ -1,7 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Project:    FileRenamerFX
+ *  Artifact:   PaneAction.java
+ *  Version:    0.1
+ *  Date:       2021-09-09 20:03:00
+ *  Author:     Miguel Angel Gil Rios (LiveGrios)
+ *  Email:      angel.grios@gmail.com
+ *  Comments:   This is the first proposal code.
  */
 package org.grios.filerenfx.gui.components.action;
 
@@ -26,8 +30,9 @@ import org.grios.filerenfx.core.parse.ActionCounter;
 import org.grios.filerenfx.core.parse.ActionExtract;
 
 /**
- *
- * @author LiveGrios
+ *  This class contains the JavaFX visual controls that defines the
+ *  visual aspect of Action Components which the end user will interact.
+ *  @author LiveGrios
  */
 public class PaneAction
 {
