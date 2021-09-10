@@ -2,6 +2,8 @@
 FileRenamerFX is an Utility-Application used to rename multiple files using a set of predefined ruled-actions in order 
 to avoid to end-users to deal with the use of regular expressions (aka *regexp*).
 
+It is builded on top of Java - JavaFX Platforms.
+
 The main GUI is clean and easy to use:
 ![Alt text](readme/images/01_MainWindow.png?raw=true "FileRenamerFX main window")
 
