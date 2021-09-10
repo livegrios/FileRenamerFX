@@ -19,7 +19,7 @@ It is builded on top of Java 8 / JavaFX platform in order to have compatibility 
 The release builds includes the specific Java Runtime (JRE) for each supported platform.
 
 ## Getting started
-The first step using the application is selecting the directory that contains the files to be renamed. It is important to be mentioned that, at his version, only files renaming is supported. This means that directories contained in parent directory selected will be ignored.
+The first step using the application is selecting the directory that contains the files to be renamed. It is important to be mentioned that, at his version, only files renaming is supported. This means that directories contained inside selected directory will be ignored.
 
 ![Alt text](readme/images/04_LoadingDirectoryContents.png?raw=true "FileRenamerFX - Selecting a directory and loading their contents.")
 
