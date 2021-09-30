@@ -254,11 +254,13 @@ public class PaneAction
                     errDesc = "Minimum value for \"To\" must be 1. Type a valid Integer value";
                     break;
                 }
-                if (end < start)
-                {
-                    errDesc = "\"To\" value must be greater or equal than \"From\" value.";
-                    break;
-                }
+                
+//                if (end < start)
+//                {
+//                    errDesc = "\"To\" value must be greater or equal than \"From\" value.";
+//                    break;
+//                }
+                
                 
                 if (errDesc == null)
                 {

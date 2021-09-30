@@ -40,13 +40,13 @@ public class ActionExtract extends Action
     @Override
     public String apply(Object fileName) throws Exception
     {        
-        if (to <= fileName.toString().length())
-            return fileName.toString().substring(from-1, to);
+        if ((from - 1) + to <= fileName.toString().length())
+            return fileName.toString().substring(from-1, from + to - 1);
         else
         {
             StringBuilder sb = new StringBuilder();
             sb.append(fileName.toString().substring(from-1, fileName.toString().length()));
-            sb.append(new String(new char[to - fileName.toString().length()]).replace("\0", "-"));
+            sb.append(new String(new char[(from + to - 1) - fileName.toString().length()]).replace("\0", "-"));
             return sb.toString();
         }
     }
