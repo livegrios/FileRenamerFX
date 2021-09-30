@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style/bootstrap/css/bootstrap.min.css">
+        <!--<link rel="stylesheet" type="text/css" href="style/font_awesome_5_15_3/css/all.css">-->
+        <style>
+            .table-spell
+            {
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 4px;
+                width: auto;
+                border-style: solid;
+                border-width: 1px;
+                border-color: #BBDEFB;                
+            }
+            .table-spell-tr-index
+            {
+                color:  #7E57C2;
+            }
+            .table-spell td
+            {
+                padding-top:  2px;
+                padding-bottom: 2px;
+                padding-left: 4px;
+                padding-right:  4px;                
+                border-style: solid;
+                border-width: 1px;
+                text-align: center;
+            }
+        </style>
+        <script type="text/javascript">
+            function spell(word)
+            {
+                var contentTRI = '';
+                var contentTRC = '';
+                if (word != null)
+                {
+                    contentTRI = '<tr class="table-spell-tr-index">';
+                    contentTRC = '<tr>';
+                    for (var i = 0; i < word.length; i++)
+                    {
+                        contentTRI += '<td>' + (i+1) + '</td>';
+                        contentTRC += '<td>' + word[i] + '</td>';
+                    }
+                    contentTRI += '</tr>';
+                    contentTRC += '</tr>';
+                }
+                document.getElementById("tblSpell").innerHTML = contentTRI + contentTRC;
+            }
+        </script>
+    </head>
+    <body style="overflow-y: hidden;">
+        <table id="tblSpell" class="table-spell font-monospace">            
+        </table>
+        <!-- Primero va el Script de JQuery -->
+        <!--<script type='text/javascript' src='js/jquery/jquery-3.6.0.min.js'></script>-->
+        <!-- Despues va el script de Bootstrap -->
+        <script type='text/javascript' src='style/bootstrap/js/bootstrap.bundle.js'></script>
+        <script type="text/javascript">
+            //spell("Antczak_NegNat_32x32_0001.png");
+        </script>
+    </body>
+</html>

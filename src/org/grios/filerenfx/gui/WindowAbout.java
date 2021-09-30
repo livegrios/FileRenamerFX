@@ -51,7 +51,7 @@ public class WindowAbout extends Stage
         fxmll.setController(this);
         fxmll.load();
         scene = new Scene(fxmll.getRoot());
-        webView.getEngine().load(new File("help/about.html").toURI().toURL().toString());
+        webView.getEngine().load(new File("html/about.html").toURI().toURL().toString());
         setScene(scene);
         
         scene.setOnKeyReleased(evt->{

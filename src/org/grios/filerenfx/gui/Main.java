@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -32,6 +34,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -50,7 +54,7 @@ import org.grios.filerenfx.task.TaskRenameFiles;
  */
 public class Main extends Application
 {
-    public static final String COLORHEX_FONT_SUCCESS = "#2e7d32";
+    public static final String COLORHEX_FONT_SUCCESS = "#198754";
     public static final String COLORHEX_FONT_ERROR = "#D32F2F";
     public static final Color COLOR_FONT_SUCCESS = Color.web(COLORHEX_FONT_SUCCESS);
     public static final Color COLOR_FONT_ERROR = Color.web(COLORHEX_FONT_ERROR);
@@ -83,6 +87,8 @@ public class Main extends Application
     @FXML Label lblActionsErrorTitle;
     @FXML Label lblActionsError;
     
+    @FXML WebView wvSpelling;
+    
     @FXML ProgressBar defaultProgressBar;
     @FXML Label lblProgress;
     
@@ -100,6 +106,8 @@ public class Main extends Application
     
     
     List<PaneAction> actions;
+    
+    WebEngine weSpelling;
     
     public Main()
     {
@@ -162,6 +170,10 @@ public class Main extends Application
         });
         
         tvFilesOriginal.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        tvFilesOriginal.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends FileDescriptor> observable, FileDescriptor oldValue, FileDescriptor newValue) ->
+        {
+            spellFileName(newValue);
+        });
         
         scene.setOnKeyReleased(evt->{
             switch(evt.getCode())
@@ -192,7 +204,15 @@ public class Main extends Application
             }
         });
         
+        initWebViewSpelling();
+        
         setPanelProgressVisible(false);
+    }
+    
+    private void initWebViewSpelling() throws Exception
+    {
+        weSpelling = wvSpelling.getEngine();
+        weSpelling.load(new File("html/spelling.html").toURI().toURL().toString());
     }
     
     private void initStyle()
@@ -474,6 +494,14 @@ public class Main extends Application
         t.start();
     }
     
+    public void spellFileName(FileDescriptor fd)
+    {
+        if (fd == null)
+            weSpelling.executeScript("spell('')");
+        else
+            weSpelling.executeScript("spell('" + fd.getName() + "')");
+    }
+    
     private void checkAllActions()
     {
         for (PaneAction pa : actions)
@@ -485,5 +513,5 @@ public class Main extends Application
         vboxActions.getChildren().clear();
         actions.clear();
         updateActionsInventory();
-    }    
+    }
 }

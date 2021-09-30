@@ -39,6 +39,7 @@ public class TaskLoadDirectoryContent extends Task<Void>
         this.app = app;
         this.files = files;
         this.tv = tv;
+        this.onlyFiles = onlyFiles;
     }
     
     public void doBefore()
