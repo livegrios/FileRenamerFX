@@ -77,6 +77,7 @@ public class TaskLoadDirectoryContent extends Task<Void>
             {
                 app.setPanelProgressVisible(false);
                 app.getTableViewFilesOriginal().getItems().clear();
+                app.setTotalFilesLoaded(listFiles.size());
                 TableAdapterFile.adapt(tv, listFiles);
             });
         } 

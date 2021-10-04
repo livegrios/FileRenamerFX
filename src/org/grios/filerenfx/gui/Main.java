@@ -64,7 +64,8 @@ public class Main extends Application
     @FXML BorderPane rootPane;
     
     @FXML ScrollPane scpActions;
-    @FXML VBox vboxActions;    
+    @FXML VBox vboxActions;  
+    @FXML VBox vboxCenter;
     @FXML VBox panelProgress;
     
     @FXML TableView<FileDescriptor> tvFilesOriginal;
@@ -92,6 +93,9 @@ public class Main extends Application
     @FXML ProgressBar defaultProgressBar;
     @FXML Label lblProgress;
     
+    @FXML Label lblFilesLoaded;
+    @FXML Label lblFilesSelected;
+    @FXML Label lblJavaRuntime;
     
     
     Stage window;    
@@ -173,6 +177,7 @@ public class Main extends Application
         tvFilesOriginal.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends FileDescriptor> observable, FileDescriptor oldValue, FileDescriptor newValue) ->
         {
             spellFileName(newValue);
+            setFilesSelected(tvFilesOriginal.getSelectionModel().getSelectedItems().size());
         });
         
         scene.setOnKeyReleased(evt->{
@@ -207,6 +212,8 @@ public class Main extends Application
         initWebViewSpelling();
         
         setPanelProgressVisible(false);
+        
+        lblJavaRuntime.setText(System.getProperty("java.version"));
     }
     
     private void initWebViewSpelling() throws Exception
@@ -300,17 +307,37 @@ public class Main extends Application
         windowAbout.show();
     }
     
+    public void setTotalFilesLoaded(int value)
+    {
+        if (value < 1)
+            lblFilesLoaded.setText("-");
+        else
+            lblFilesLoaded.setText("" + value);
+            
+    }
+    
+    public void setFilesSelected(int value)
+    {
+        if (value < 1)
+            lblFilesSelected.setText("0");
+        else
+            lblFilesSelected.setText("" + value);
+            
+    }
+    
     public void setPanelProgressVisible(boolean value)
     {
         if (Platform.isFxApplicationThread())
         {
             if (value)
             {
-                rootPane.setBottom(panelProgress);
+                //rootPane.setBottom(panelProgress);
+                vboxCenter.getChildren().add(panelProgress);
             }
             else
             {
-                rootPane.setBottom(null);
+                //rootPane.setBottom(null);
+                vboxCenter.getChildren().remove(panelProgress);
             }
         }
         else
