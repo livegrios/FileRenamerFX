@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style/bootstrap/css/bootstrap.min.css">
+        <!--<link rel="stylesheet" type="text/css" href="style/font_awesome_5_15_3/css/all.css">-->
+        <style>
+            .table_file_info
+            {
+                border-style: solid;
+                border-width: 1px;
+                border-color: #EEEEEE;
+                margin-left: 4px;
+            }
+            .table_file_info td
+            {
+                border-style: solid;
+                border-width: 1px;
+                border-color: #BDBDBD;               
+                padding-left: 4px;
+                padding-right: 4px;
+                padding-top: 4px;
+                padding-bottom: 4px;
+            }
+        </style>
+        <script type="text/javascript">
+            function displayFileInfo(fileName, filePath, fullFilePath, extension, fileSize)
+            {
+                if (fileName == null || fileName.length === 0)
+                {
+                    document.getElementById('divFileInfo').style.display = 'none';
+                    document.getElementById('divNoFile').style.display = 'block';
+                }
+                else
+                {
+                    document.getElementById('tdName').innerHTML = fileName;
+                    document.getElementById('tdPath').innerHTML = filePath;
+                    //document.getElementById('tdFullFilePath').innerHTML = fullFilePath;
+                    document.getElementById('tdExtension').innerHTML = extension;
+                    document.getElementById('tdSize').innerHTML = fileSize + " bytes";
+                                        
+                    document.getElementById('divNoFile').style.display = 'none';
+                    document.getElementById('divFileInfo').style.display = 'block';
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="divFileInfo" style="margin-top: 8px;">
+            <!--<img src="img/metadata.png" style="width:64px; float: left; margin-right: 8px; margin-top: -4px;"/>-->
+            <table class="table_file_info">
+                <tr>
+                    <td class="text-end" style="font-size:14px;">Name:</td>
+                    <td id="tdName" class="font-monospace"></td>
+                </tr>
+                <tr>
+                    <td class="text-end" style="font-size:14px;">Extension:</td>
+                    <td id="tdExtension" class="font-monospace"></td>
+                </tr>
+                <tr>
+                    <td class="text-end" style="font-size:14px;">Path:</td>
+                    <td id="tdPath" class="font-monospace" ></td>
+                </tr>
+                <!--<tr>
+                    <td class="text-end" style="font-size:14px;">Full File Path:</td>
+                    <td id="tdFullFilePath" class="font-monospace"></td>
+                </tr>-->
+                <tr>
+                    <td class="text-end" style="font-size:14px;">Size:</td>
+                    <td id="tdSize" class="font-monospace"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="divNoFile">
+            No File Information available.
+        </div>
+        <!-- Primero va el Script de JQuery -->
+        <!--<script type='text/javascript' src='js/jquery/jquery-3.6.0.min.js'></script>-->
+        <!-- Despues va el script de Bootstrap -->
+        <script type='text/javascript' src='style/bootstrap/js/bootstrap.bundle.js'></script>
+        <script type="text/javascript">
+            //spell("Antczak_NegNat_32x32_0001.png");
+            displayFileInfo(null, null, null, null, null);
+            //displayFileInfo('PNP__0001', 'E:\VSPROY\VS2019\Python\Research\01_CoronaryStenosisCNN\02_Patches_Antczak_5000\01_Training\Positive', 'E:\VSPROY\VS2019\Python\Research\01_CoronaryStenosisCNN\02_Patches_Antczak_5000\01_Training\Positive\PNP__0001.png', 'png', 676)
+        </script>
+    </body>
+</html>

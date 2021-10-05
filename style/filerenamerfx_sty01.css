@@ -109,8 +109,43 @@
     -fx-font-family:'Tahoma';
     -fx-background-color: rgba(255, 245, 157, 1.0);
     -fx-text-fill: #000000;
-    -fx-border-style: 'solid';
+    /*-fx-border-style: 'solid';*/
     -fx-border-color: #FFB74D;
+}
+
+
+.btn_gui_sections
+{
+    -fx-background-color: transparent;
+}
+
+.btn_gui_sections:hover
+{
+    -fx-background-color: #E0E0E0;
+}
+
+.btn_gui_sections:pressed
+{
+    -fx-background-color: #EEEEEE;
+}
+
+
+.btn_close_pane
+{
+    -fx-background-color: transparent;
+    -fx-text-fill: #212121;
+}
+
+.btn_close_pane:hover
+{
+    -fx-background-color: #E64A19;
+    -fx-text-fill: white;
+}
+
+.btn_close_pane:pressed
+{
+    -fx-background-color: #FF7043;
+    -fx-text-fill: white;
 }
 
 /*

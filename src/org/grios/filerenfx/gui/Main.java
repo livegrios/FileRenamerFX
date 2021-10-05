@@ -10,6 +10,10 @@
 package org.grios.filerenfx.gui;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.application.Application;
@@ -31,6 +35,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -67,6 +72,9 @@ public class Main extends Application
     @FXML VBox vboxActions;  
     @FXML VBox vboxCenter;
     @FXML VBox panelProgress;
+    @FXML VBox vboxLeftRenaming;
+    @FXML AnchorPane paneFileInfo;
+    @FXML AnchorPane pnlFileSpelling;
     
     @FXML TableView<FileDescriptor> tvFilesOriginal;
     //@FXML TableView<FileDescriptor> tvFilesRenamed;
@@ -81,6 +89,11 @@ public class Main extends Application
     @FXML Button btnPerformPreview;
     @FXML SplitMenuButton btnConfig;
     
+    @FXML Button btnTogglePaneLeft;
+    @FXML Button btnTogglePaneRight;
+    @FXML Button btnTogglePaneBottom;
+    @FXML Button btnCloseDetails;
+    
     @FXML MenuItem mnuiAbout;
     
     @FXML Label lblActionsAdded;
@@ -89,6 +102,7 @@ public class Main extends Application
     @FXML Label lblActionsError;
     
     @FXML WebView wvSpelling;
+    @FXML WebView wvFileInfo;
     
     @FXML ProgressBar defaultProgressBar;
     @FXML Label lblProgress;
@@ -112,6 +126,7 @@ public class Main extends Application
     List<PaneAction> actions;
     
     WebEngine weSpelling;
+    WebEngine weFileInfo;
     
     public Main()
     {
@@ -161,6 +176,12 @@ public class Main extends Application
         btnConfig.setOnAction(evt->{});
         mnuiAbout.setOnAction(evt->{showWindowAbout();});
         
+        btnTogglePaneLeft.setOnAction(evt->{togglePanelActionsVisible();});
+        btnTogglePaneRight.setOnAction(evt->{togglePanelFileInfoVisible();});
+        btnTogglePaneBottom.setOnAction(evt->{togglePanelSpellVisible();});
+        
+        btnCloseDetails.setOnAction(evt->{setPanelFileInfoVisible(false);});
+        
         txtSourceDirectory.setOnKeyReleased(evt -> {
             if (evt.getCode() == KeyCode.ENTER)
             {
@@ -177,7 +198,16 @@ public class Main extends Application
         tvFilesOriginal.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends FileDescriptor> observable, FileDescriptor oldValue, FileDescriptor newValue) ->
         {
             spellFileName(newValue);
+            showFileInfo(newValue);
             setFilesSelected(tvFilesOriginal.getSelectionModel().getSelectedItems().size());
+        });
+        
+        tvFilesOriginal.setOnMouseClicked(evt->{
+            if (evt.getClickCount() == 2 && !isPanelFileInfoVisible())
+            {
+                showFileInfo(tvFilesOriginal.getSelectionModel().getSelectedItem());
+                setPanelFileInfoVisible(true);
+            }
         });
         
         scene.setOnKeyReleased(evt->{
@@ -209,17 +239,21 @@ public class Main extends Application
             }
         });
         
-        initWebViewSpelling();
+        initWebViews();
         
+        setPanelFileInfoVisible(false);
         setPanelProgressVisible(false);
         
         lblJavaRuntime.setText(System.getProperty("java.version"));
     }
     
-    private void initWebViewSpelling() throws Exception
+    private void initWebViews() throws Exception
     {
         weSpelling = wvSpelling.getEngine();
         weSpelling.load(new File("html/spelling.html").toURI().toURL().toString());
+        
+        weFileInfo = wvFileInfo.getEngine();
+        weFileInfo.load(new File("html/file_info.html").toURI().toURL().toString());
     }
     
     private void initStyle()
@@ -250,7 +284,7 @@ public class Main extends Application
         initStyle();
                 
         window = primaryStage;
-        window.initStyle(StageStyle.UNIFIED);
+        window.initStyle(StageStyle.DECORATED);
         window.getIcons().add(ICON_APP);
         window.setScene(scene);
         window.setTitle("FileRenamerFX");
@@ -362,6 +396,63 @@ public class Main extends Application
             }
         }
         
+    }
+    
+    public void setPanelActionsVisible(boolean value)
+    {
+        if (value)
+            rootPane.setLeft(vboxLeftRenaming);
+        else
+            rootPane.setLeft(null);
+    }
+    
+    public boolean isPanelActionsVisible()
+    {
+        return rootPane.getLeft() != null;
+    }
+    
+    public void togglePanelActionsVisible()
+    {
+        setPanelActionsVisible(!isPanelActionsVisible());
+    }
+    
+    public void setPanelFileInfoVisible(boolean value)
+    {
+        if (value)
+        {
+            if (rootPane.getRight() == null)
+                rootPane.setRight(paneFileInfo);
+        }
+        else
+            rootPane.setRight(null);
+    }
+    
+    public boolean isPanelFileInfoVisible()
+    {
+        return rootPane.getRight() != null;
+    }
+    
+    public void togglePanelFileInfoVisible()
+    {
+        setPanelFileInfoVisible(!isPanelFileInfoVisible());
+    }
+    
+    public void setPanelSpellVisible(boolean value)
+    {
+        if (value)
+            vboxCenter.getChildren().add(1, pnlFileSpelling);
+        else
+            vboxCenter.getChildren().remove(pnlFileSpelling);
+    }
+    
+    public boolean isPanelSpellVisible()
+    {
+        return vboxCenter.getChildren().contains(pnlFileSpelling);
+    }
+    
+    public void togglePanelSpellVisible()
+    {
+        setPanelSpellVisible(!isPanelSpellVisible());
     }
     
     public void updateProgressInfo(String text, double value)
@@ -527,6 +618,32 @@ public class Main extends Application
             weSpelling.executeScript("spell('')");
         else
             weSpelling.executeScript("spell('" + fd.getName() + "')");
+    }
+    
+    public void showFileInfo(FileDescriptor fd)
+    {
+        
+        if (fd == null)
+            weFileInfo.executeScript("displayFileInfo(null, null, null, null, null)");
+        else //displayFileInfo(fileName, filePath, fullFilePath, fileSize)
+        {
+            BasicFileAttributes attr;
+            
+            try
+            {
+                attr = Files.readAttributes(Paths.get(fd.getFile().toURI()), BasicFileAttributes.class);
+                String script = "displayFileInfo('" + fd.getName() + "', " +
+                                                     "'" + fd.getFile().getParent().replaceAll("\\\\", "/") + "', " +
+                                                     "'" + fd.getFile().getPath().replaceAll("\\\\", "/") + "', " +
+                                                     "'" + fd.getExtension() + "', " +
+                                                     attr.size() + ")";
+                weFileInfo.executeScript(script);
+            } 
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
     }
     
     private void checkAllActions()
