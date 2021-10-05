@@ -10,7 +10,7 @@ The main GUI is clean and easy to use:
 ## Features
 This application is easy to use.
 
-The memory footprint is low. However, compared with other console-based applications/scripts, it does not.
+The memory footprint is low. However, compared with other console-based applications/scripts, it is not.
 
 The GUI is easy to use with good performance among a wide hardware configurations.
 
