@@ -148,6 +148,56 @@
     -fx-text-fill: white;
 }
 
+.btn-toolbar
+{
+    -fx-background-color: transparent;
+}
+
+.btn-toolbar:hover
+{
+    -fx-background-color: #E0E0E0;
+}
+
+.btn-toolbar:pressed
+{
+    -fx-background-color: #EEEEEE;
+}
+
+.split-menu-button-style1
+{
+    -fx-background-color: transparent;
+}
+
+.split-menu-button-style1:hover
+{
+    -fx-background-color: #E0E0E0;
+}
+
+.split-menu-button-style1:pressed
+{
+    -fx-background-color: #EEEEEE;
+}
+
+.split-menu-button-style1 > .label
+{
+    -fx-background-color: transparent;
+}
+
+.split-menu-button-style1 .button:hover
+{
+    -fx-background-color: #E0E0E0;
+}
+
+.split-menu-button-style1 .button:pressed
+{
+    -fx-background-color: #EEEEEE;
+}
+
+.split-menu-button-style1 > .arrow-button 
+{
+    -fx-background-color: transparent ;
+}
+
 /*
 .vbox_actions:focused
 {
