@@ -64,7 +64,7 @@ public class Main extends Application
     public static final Color COLOR_FONT_SUCCESS = Color.web(COLORHEX_FONT_SUCCESS);
     public static final Color COLOR_FONT_ERROR = Color.web(COLORHEX_FONT_ERROR);
     
-    public static final Image ICON_APP = new Image(System.class.getResource("/icons/app/Icon_v.0.1.png").toExternalForm());
+    public static final Image ICON_APP = new Image(Main.class.getResource("/icons/app/Icon_v.0.1.png").toExternalForm());
     
     @FXML BorderPane rootPane;
     

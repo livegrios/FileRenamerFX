@@ -82,7 +82,7 @@ public class TableAdapterFile
                         super.updateItem(v, value);
                         if (getTableRow() != null && getTableRow().getItem() != null)
                         {
-                            ImageView imgv = new ImageView(System.class.getResource("/icons/48/document-48.png").toExternalForm());
+                            ImageView imgv = new ImageView(TableAdapterFile.class.getResource("/icons/48/document-48.png").toExternalForm());
                             imgv.setFitHeight(24.0);
                             imgv.setFitWidth(24.0);
                             setGraphic(imgv);
